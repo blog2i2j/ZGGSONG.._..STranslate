@@ -1,4 +1,4 @@
-namespace STranslate.Plugin.Translate.Transmart.View;
+namespace STranslate.Plugin.Translate.TransmartBuiltIn.View;
 
 public partial class SettingsView
 {

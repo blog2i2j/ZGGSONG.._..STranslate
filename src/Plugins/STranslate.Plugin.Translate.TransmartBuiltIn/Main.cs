@@ -1,10 +1,10 @@
-using STranslate.Plugin.Translate.Transmart.View;
-using STranslate.Plugin.Translate.Transmart.ViewModel;
+using STranslate.Plugin.Translate.TransmartBuiltIn.View;
+using STranslate.Plugin.Translate.TransmartBuiltIn.ViewModel;
 using System.ComponentModel;
 using System.Text.Json;
 using System.Windows.Controls;
 
-namespace STranslate.Plugin.Translate.Transmart;
+namespace STranslate.Plugin.Translate.TransmartBuiltIn;
 
 public class Main : TranslatePluginBase
 {

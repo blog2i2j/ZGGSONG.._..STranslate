@@ -1,4 +1,4 @@
-namespace STranslate.Plugin.Translate.Transmart;
+namespace STranslate.Plugin.Translate.TransmartBuiltIn;
 
 public class Settings
 {

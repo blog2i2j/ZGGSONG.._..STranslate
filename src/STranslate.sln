@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STranslate.Plugin.Translate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STranslate.Plugin.Translate.MTranServer", "Plugins\STranslate.Plugin.Translate.MTranServer\STranslate.Plugin.Translate.MTranServer.csproj", "{148169C6-266F-4BD6-BC44-94735AEAB30E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STranslate.Plugin.Translate.Transmart", "Plugins\STranslate.Plugin.Translate.Transmart\STranslate.Plugin.Translate.Transmart.csproj", "{F1BA8ED5-2A9B-4B0F-ACBF-06B3CF568955}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STranslate.Plugin.Translate.TransmartBuiltIn", "Plugins\STranslate.Plugin.Translate.TransmartBuiltIn\STranslate.Plugin.Translate.TransmartBuiltIn.csproj", "{F1BA8ED5-2A9B-4B0F-ACBF-06B3CF568955}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STranslate.Plugin.Translate.OpenAI", "Plugins\STranslate.Plugin.Translate.OpenAI\STranslate.Plugin.Translate.OpenAI.csproj", "{814B31E0-22D6-469F-AD3C-534BA3120451}"
 EndProject

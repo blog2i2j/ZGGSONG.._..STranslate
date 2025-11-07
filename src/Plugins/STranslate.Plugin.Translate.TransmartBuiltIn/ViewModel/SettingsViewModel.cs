@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
-namespace STranslate.Plugin.Translate.Transmart.ViewModel;
+namespace STranslate.Plugin.Translate.TransmartBuiltIn.ViewModel;
 
 public partial class SettingsViewModel(IPluginContext context, Main main) : ObservableObject
 {
