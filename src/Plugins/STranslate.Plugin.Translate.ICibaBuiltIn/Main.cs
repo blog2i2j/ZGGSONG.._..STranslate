@@ -153,7 +153,7 @@ public class Main : DictionaryPluginBase
             {
                 var validDictMean = new DictMean
                 {
-                    PartOfSpeech = Context.GetTranslation("STranslate_Plugin_Translate_KingSoftDict_Paraphrase"),
+                    PartOfSpeech = Context.GetTranslation("Paraphrase"),
                     Means = new ObservableCollection<string>(validMeans)
                 };
                 result.DictMeans.Add(validDictMean);
@@ -164,7 +164,7 @@ public class Main : DictionaryPluginBase
             {
                 var invalidDictMean = new DictMean
                 {
-                    PartOfSpeech = Context.GetTranslation("STranslate_Plugin_Translate_KingSoftDict_Expand"),
+                    PartOfSpeech = Context.GetTranslation("Expand"),
                     Means = new ObservableCollection<string>(invalidMeans)
                 };
                 result.DictMeans.Add(invalidDictMean);
