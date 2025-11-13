@@ -486,7 +486,7 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
             var (success, text) = await GetTextAsync();
             if (!success || string.IsNullOrWhiteSpace(text)) return;
 
-            var (isSuccess, source, target) = await LanguageDetector.GetLanguageAsync(InputText, cancellationToken).ConfigureAwait(false);
+            var (isSuccess, source, target) = await LanguageDetector.GetLanguageAsync(text, cancellationToken).ConfigureAwait(false);
             if (!isSuccess)
             {
                 _logger.LogWarning($"Language detection failed for text: {text}");
