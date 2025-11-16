@@ -23,7 +23,7 @@
 
     <!--  // MenuItem字体大小统一设置为12，配合MenuItem固定无法更改，不改还好看点 //  -->
     <Style BasedOn="{StaticResource {x:Type MenuItem}}" TargetType="MenuItem">
-        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontSize" Value="14" />
     </Style>
 
     <!--#endregion-->
