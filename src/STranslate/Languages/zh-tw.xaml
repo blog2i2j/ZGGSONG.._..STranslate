@@ -354,6 +354,12 @@
     <sys:String x:Key="WindowScreenTypePrimary">主顯示器</sys:String>
     <sys:String x:Key="WindowScreenTypeCustom">自訂顯示器</sys:String>
 
+    <sys:String x:Key="WindowAlignTypeCenter">中央</sys:String>
+    <sys:String x:Key="WindowAlignTypeCenterTop">頂部置中</sys:String>
+    <sys:String x:Key="WindowAlignTypeLeftTop">左上</sys:String>
+    <sys:String x:Key="WindowAlignTypeRightTop">右上</sys:String>
+    <sys:String x:Key="WindowAlignTypeCustom">自訂位置</sys:String>
+
     <sys:String x:Key="LogEventLevelVerbose">詳細</sys:String>
     <sys:String x:Key="LogEventLevelDebug">除錯</sys:String>
     <sys:String x:Key="LogEventLevelInformation">資訊</sys:String>
@@ -361,11 +367,9 @@
     <sys:String x:Key="LogEventLevelError">錯誤</sys:String>
     <sys:String x:Key="LogEventLevelFatal">致命</sys:String>
 
-    <sys:String x:Key="WindowAlignTypeCenter">中央</sys:String>
-    <sys:String x:Key="WindowAlignTypeCenterTop">頂部置中</sys:String>
-    <sys:String x:Key="WindowAlignTypeLeftTop">左上</sys:String>
-    <sys:String x:Key="WindowAlignTypeRightTop">右上</sys:String>
-    <sys:String x:Key="WindowAlignTypeCustom">自訂位置</sys:String>
+    <sys:String x:Key="OcrResultShowingTypeOriginal">原始文字</sys:String>
+    <sys:String x:Key="OcrResultShowingTypeMarkdown">Markdown</sys:String>
+    <sys:String x:Key="OcrResultShowingTypeLatex">Latex</sys:String>
 
     <!--  // Plugins //  -->
     <sys:String x:Key="UnsupportedSourceLang">不支援的來源語言</sys:String>

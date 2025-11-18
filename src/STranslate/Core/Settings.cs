@@ -201,7 +201,7 @@ public partial class Settings : ObservableObject
     [ObservableProperty] public partial bool IsOcrShowingTextControl { get; set; } = false;
     [ObservableProperty] public partial double OcrWindowWidth { get; set; } = 600;
     [ObservableProperty] public partial double OcrWindowHeight { get; set; } = 600;
-    [ObservableProperty] public partial bool IsOcrShowingMarkdown { get; set; } = false;
+    [ObservableProperty] public partial OcrResultShowingType OcrResultShowingType { get; set; } = OcrResultShowingType.Original;
 
     #endregion
 
@@ -510,6 +510,13 @@ public enum WindowAlignType
     LeftTop,
     RightTop,
     Custom
+}
+
+public enum OcrResultShowingType
+{
+    Original,
+    Markdown,
+    Latex
 }
 
 #endregion

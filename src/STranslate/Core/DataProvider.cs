@@ -32,6 +32,7 @@ public class DataProvider
         DropdownDataGeneric<WindowAlignType>.UpdateLabels(WindowAlignTypes);
         DropdownDataGeneric<StartMode>.UpdateLabels(StartModes);
         DropdownDataGeneric<LogEventLevel>.UpdateLabels(LogEventLevels);
+        DropdownDataGeneric<OcrResultShowingType>.UpdateLabels(OcrResultShowingTypes);
     }
 
     #region LangEnums
@@ -120,6 +121,14 @@ public class DataProvider
     public class LogEventLevelData : DropdownDataGeneric<LogEventLevel> { }
     public List<LogEventLevelData> LogEventLevels { get; } =
         DropdownDataGeneric<LogEventLevel>.GetValues<LogEventLevelData>("LogEventLevel");
+
+    #endregion
+
+    #region OcrResultShowingTypes
+
+    public class OcrResultShowingTypeData : DropdownDataGeneric<OcrResultShowingType> { }
+    public List<OcrResultShowingTypeData> OcrResultShowingTypes { get; } =
+        DropdownDataGeneric<OcrResultShowingType>.GetValues<OcrResultShowingTypeData>("OcrResultShowingType");
 
     #endregion
 }

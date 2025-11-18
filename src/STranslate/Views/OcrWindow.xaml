@@ -9,6 +9,7 @@
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
     xmlns:local="clr-namespace:STranslate.Views"
     xmlns:markdig="clr-namespace:Markdig.Wpf;assembly=Markdig.Wpf"
+    xmlns:math="clr-namespace:WpfMath.Controls;assembly=WpfMath"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:s="https://github.com/zggsong/2022/xaml"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
@@ -371,14 +372,21 @@
                                 Text="{Binding Result, UpdateSourceTrigger=PropertyChanged}"
                                 TextWrapping="Wrap"
                                 VerticalScrollBarVisibility="Auto"
-                                Visibility="{Binding Settings.IsOcrShowingMarkdown, Converter={cnvt:BoolToVisibilityInverseConverter}}" />
+                                Visibility="{Binding Settings.OcrResultShowingType, Converter={cnvt:OcrResultShowingTypeVisibilityConverter}, ConverterParameter=Original}" />
                             <markdig:MarkdownViewer
                                 Background="Transparent"
                                 BorderBrush="Transparent"
                                 BorderThickness="0"
-                                Focusable="True"
                                 Markdown="{Binding Result}"
-                                Visibility="{Binding Settings.IsOcrShowingMarkdown, Converter={cnvt:BoolToVisibilityConverter}}" />
+                                Visibility="{Binding Settings.OcrResultShowingType, Converter={cnvt:OcrResultShowingTypeVisibilityConverter}, ConverterParameter=Markdown}" />
+                            <math:FormulaControl
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                Formula="{Binding LatexResult}"
+                                Visibility="{Binding Settings.OcrResultShowingType, Converter={cnvt:OcrResultShowingTypeVisibilityConverter}, ConverterParameter=Latex}" />
                             <Grid
                                 Grid.Row="1"
                                 Margin="5"
@@ -424,10 +432,13 @@
                                     FlowDirection="RightToLeft"
                                     Orientation="Horizontal"
                                     Spacing="5">
-                                    <control:IconButton
-                                        Icon="{x:Static ui:FluentSystemIcons.Markdown_20_Regular}"
-                                        IsOn="{Binding Settings.IsOcrShowingMarkdown}"
-                                        Type="Toggle" />
+                                    <ComboBox
+                                        MinWidth="100"
+                                        DisplayMemberPath="Display"
+                                        FlowDirection="LeftToRight"
+                                        ItemsSource="{Binding DataProvider.OcrResultShowingTypes}"
+                                        SelectedValue="{Binding Settings.OcrResultShowingType}"
+                                        SelectedValuePath="Value" />
                                 </ikw:SimpleStackPanel>
                             </Grid>
                         </Grid>

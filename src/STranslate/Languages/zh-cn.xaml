@@ -367,6 +367,10 @@
     <sys:String x:Key="LogEventLevelError">错误</sys:String>
     <sys:String x:Key="LogEventLevelFatal">致命</sys:String>
 
+    <sys:String x:Key="OcrResultShowingTypeOriginal">原始文本</sys:String>
+    <sys:String x:Key="OcrResultShowingTypeMarkdown">Markdown</sys:String>
+    <sys:String x:Key="OcrResultShowingTypeLatex">Latex</sys:String>
+
     <!--  // Plugins //  -->
     <sys:String x:Key="UnsupportedSourceLang">不支持的源语言</sys:String>
     <sys:String x:Key="UnsupportedTargetLang">不支持的目标语言</sys:String>

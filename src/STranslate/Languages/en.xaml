@@ -366,6 +366,10 @@
     <sys:String x:Key="LogEventLevelError">Error</sys:String>
     <sys:String x:Key="LogEventLevelFatal">Fatal</sys:String>
 
+    <sys:String x:Key="OcrResultShowingTypeOriginal">Original</sys:String>
+    <sys:String x:Key="OcrResultShowingTypeMarkdown">Markdown</sys:String>
+    <sys:String x:Key="OcrResultShowingTypeLatex">Latex</sys:String>
+
     <!--  // Plugins //  -->
     <sys:String x:Key="UnsupportedSourceLang">Unsupported source language</sys:String>
     <sys:String x:Key="UnsupportedTargetLang">Unsupported target language</sys:String>

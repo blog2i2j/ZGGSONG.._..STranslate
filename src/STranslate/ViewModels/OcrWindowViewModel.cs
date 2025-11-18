@@ -90,6 +90,10 @@ public partial class OcrWindowViewModel : ObservableObject, IDisposable
     [NotifyCanExecuteChangedFor(nameof(TranslateCommand))]
     public partial string Result { get; set; } = string.Empty;
 
+    partial void OnResultChanged(string value) => OnPropertyChanged(nameof(LatexResult));
+
+    public string LatexResult => ExtractLatex(Result);
+
     private OcrResult? _lastOcrResult;
 
     [ObservableProperty]
@@ -517,6 +521,37 @@ public partial class OcrWindowViewModel : ObservableObject, IDisposable
         {
             return default;
         }
+    }
+
+    /// <summary>
+    /// 从文本中提取被 $$ 包裹的 LaTeX 内容
+    /// </summary>
+    /// <param name="text">输入文本</param>
+    /// <returns>提取的 LaTeX 内容,如果没有则返回空字符串</returns>
+    private static string ExtractLatex(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return string.Empty;
+
+        var latexList = new List<string>();
+        var startIndex = 0;
+
+        while (true)
+        {
+            startIndex = text.IndexOf("$$", startIndex, StringComparison.Ordinal);
+            if (startIndex == -1)
+                break;
+
+            var endIndex = text.IndexOf("$$", startIndex + 2, StringComparison.Ordinal);
+            if (endIndex == -1)
+                break;
+
+            var latex = text.Substring(startIndex + 2, endIndex - startIndex - 2).Trim();
+            latexList.Add(latex);
+            startIndex = endIndex + 2;
+        }
+
+        return string.Join(Environment.NewLine + Environment.NewLine, latexList);
     }
 
     #endregion
