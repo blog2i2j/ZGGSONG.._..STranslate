@@ -247,6 +247,9 @@
     <sys:String x:Key="On">On</sys:String>
     <sys:String x:Key="Off">Off</sys:String>
 
+    <sys:String x:Key="Previous">Previous</sys:String>
+    <sys:String x:Key="Next">Next</sys:String>
+
     <!--  // Input Control //  -->
     <sys:String x:Key="RemoveLineBreak">Remove Line Break</sys:String>
     <sys:String x:Key="RemoveSpace">Remove Space</sys:String>
