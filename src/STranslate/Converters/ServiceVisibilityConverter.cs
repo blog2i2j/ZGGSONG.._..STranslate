@@ -15,9 +15,10 @@ public class ServiceVisibilityConverter : MarkupExtension, IMultiValueConverter
 
         var isEnabled = (bool)values[0];
         var execMode = (ExecutionMode)values[1];
+        var isTemporaryDisplay = (bool)values[2];
 
         // 当 IsEnabled 为 true 且 ExecutionMode 不为 Pinned 时可见
-        if (isEnabled && execMode != ExecutionMode.Pinned)
+        if (isEnabled && (isTemporaryDisplay || execMode != ExecutionMode.Pinned))
         {
             return Visibility.Visible;
         }

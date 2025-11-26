@@ -47,6 +47,7 @@ public partial class Service : ObservableObject, IDisposable
     [ObservableProperty] public partial bool IsEnabled { get; set; } = true;
 
     [ObservableProperty] public partial ExecutionMode ExecMode { get; set; } = ExecutionMode.Automatic;
+    [ObservableProperty] public partial bool TemporaryDisplay { get; set; } = false;
 
     [ObservableProperty] public partial bool AutoBackTranslation { get; set; } = false;
 

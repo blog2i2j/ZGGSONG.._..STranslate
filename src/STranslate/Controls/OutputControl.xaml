@@ -44,8 +44,14 @@
             Padding="0"
             HorizontalAlignment="Stretch"
             control:ExpanderAttach.HasResult="{Binding Plugin.DictionaryResult.ResultType, Converter={cnvt:DictionaryResultSuccessErrorBoolConverter}}"
-            Style="{StaticResource AnimatedExpanderCardStyle}"
-            Visibility="{Binding IsEnabled, Converter={cnvt:BoolToVisibilityConverter}}">
+            Style="{StaticResource AnimatedExpanderCardStyle}">
+            <Expander.Visibility>
+                <MultiBinding Converter="{cnvt:ServiceVisibilityConverter}">
+                    <Binding Path="IsEnabled" />
+                    <Binding Path="ExecMode" />
+                    <Binding Path="TemporaryDisplay" />
+                </MultiBinding>
+            </Expander.Visibility>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Expanded">
                     <i:Interaction.Behaviors>
@@ -79,6 +85,23 @@
                                 </MenuItem.Icon>
                             </MenuItem>
                             <Separator />
+                            <MenuItem Header="{DynamicResource TransExecMode}">
+                                <MenuItem.Icon>
+                                    <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.GlanceHorizontalSparkles_20_Regular}" />
+                                </MenuItem.Icon>
+                                <MenuItem
+                                    Header="{DynamicResource TransExecAutomatic}"
+                                    IsCheckable="True"
+                                    IsChecked="{Binding Source={StaticResource SvcProxy}, Path=Data.ExecMode, Converter={cnvt:ExecutionModeBoolConverter}, ConverterParameter=Automatic}" />
+                                <MenuItem
+                                    Header="{DynamicResource TransExecManual}"
+                                    IsCheckable="True"
+                                    IsChecked="{Binding Source={StaticResource SvcProxy}, Path=Data.ExecMode, Converter={cnvt:ExecutionModeBoolConverter}, ConverterParameter=Manual}" />
+                                <MenuItem
+                                    Header="{DynamicResource TransExecPinned}"
+                                    IsCheckable="True"
+                                    IsChecked="{Binding Source={StaticResource SvcProxy}, Path=Data.ExecMode, Converter={cnvt:ExecutionModeBoolConverter}, ConverterParameter=Pinned}" />
+                            </MenuItem>
                             <MenuItem
                                 Command="{Binding Source={StaticResource MainVmProxy}, Path=Data.NavigateCommand}"
                                 CommandParameter="{Binding Source={StaticResource SvcProxy}, Path=Data}"
@@ -354,6 +377,7 @@
                 <MultiBinding Converter="{cnvt:ServiceVisibilityConverter}">
                     <Binding Path="IsEnabled" />
                     <Binding Path="ExecMode" />
+                    <Binding Path="TemporaryDisplay" />
                 </MultiBinding>
             </Expander.Visibility>
             <i:Interaction.Triggers>

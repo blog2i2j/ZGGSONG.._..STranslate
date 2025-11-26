@@ -1,4 +1,5 @@
 using STranslate.Core;
+using STranslate.Plugin;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -6,6 +7,10 @@ using System.Windows.Markup;
 
 namespace STranslate.Converters;
 
+public class ExecutionModeVisibilityConverter : EnumToVisibilityConverter<ExecutionMode>
+{
+
+}
 public class OcrResultShowingTypeVisibilityConverter : EnumToVisibilityConverter<OcrResultShowingType>
 {
 }

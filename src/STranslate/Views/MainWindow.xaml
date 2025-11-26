@@ -102,12 +102,12 @@
             ScreenshotTranslateInImage="{Binding Settings.ScreenshotTranslateInImage}"
             SettingCommand="{Binding OpenSettingsCommand}" />
 
-        <ui:ScrollViewerEx Margin="10,37,10,5">
+        <ui:ScrollViewerEx Margin="10,37,0,5">
             <StackPanel>
                 <!--  //  InputControl  //  -->
                 <control:InputControl
                     x:Name="PART_Input"
-                    Margin="0,0,0,10"
+                    Margin="0,0,10,10"
                     CopyCommand="{Binding CopyCommand}"
                     CurrentFontSize="{Binding Settings.FontSize}"
                     ExecuteCommand="{Binding TranslateCommand}"
@@ -124,7 +124,7 @@
                     Visibility="{Binding Settings.HideInput, Converter={cnvt:BoolToVisibilityInverseConverter}}" />
 
                 <!--  // LangSelectControl //  -->
-                <Grid Margin="0,0,0,10">
+                <Grid Margin="0,0,10,10">
                     <Grid.Style>
                         <Style TargetType="Grid">
                             <Style.Triggers>
@@ -144,6 +144,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
                     <ComboBox
@@ -170,10 +171,66 @@
                         ItemsSource="{Binding DataProvider.LangEnums}"
                         SelectedValue="{Binding Settings.TargetLang}"
                         SelectedValuePath="Value" />
+
+                    <ListBox
+                        Grid.Column="3"
+                        Background="Transparent"
+                        ItemsSource="{Binding TranslateInstance.Services}">
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <ContentPresenter />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.Resources>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Button
+                                    Padding="0"
+                                    Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.TemporaryTranslateCommand}"
+                                    CommandParameter="{Binding}"
+                                    Visibility="{Binding ExecMode, Converter={cnvt:ExecutionModeVisibilityConverter}, ConverterParameter=Pinned}">
+                                    <Button.Resources>
+                                        <s:BindingProxy x:Key="SvcProxy" Data="{Binding}" />
+                                    </Button.Resources>
+                                    <Button.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem
+                                                Header="{DynamicResource TransExecAutomatic}"
+                                                IsCheckable="True"
+                                                IsChecked="{Binding Source={StaticResource SvcProxy}, Path=Data.ExecMode, Converter={cnvt:ExecutionModeBoolConverter}, ConverterParameter=Automatic}" />
+                                            <MenuItem
+                                                Header="{DynamicResource TransExecManual}"
+                                                IsCheckable="True"
+                                                IsChecked="{Binding Source={StaticResource SvcProxy}, Path=Data.ExecMode, Converter={cnvt:ExecutionModeBoolConverter}, ConverterParameter=Manual}" />
+                                            <MenuItem
+                                                Header="{DynamicResource TransExecPinned}"
+                                                IsCheckable="True"
+                                                IsChecked="{Binding Source={StaticResource SvcProxy}, Path=Data.ExecMode, Converter={cnvt:ExecutionModeBoolConverter}, ConverterParameter=Pinned}" />
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                    <Image
+                                        Height="{DynamicResource STControlFontSize18}"
+                                        Margin="6"
+                                        Source="{Binding MetaData.IconPath}" />
+                                </Button>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
 
                 <!--  // OutputControl //  -->
                 <control:OutputControl
+                    Margin="0,0,10,0"
                     CleanTransBackCommand="{Binding CleanTransBackCommand}"
                     CopyCommand="{Binding CopyCommand}"
                     ExplainCommand="{Binding ExplainCommand}"

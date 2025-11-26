@@ -165,7 +165,7 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
             // 按服务启用顺序排序
             var enabledServices = TranslateInstance.Services.Where(x => x.IsEnabled).ToList();
             history.Data = [.. history.Data.OrderBy(data => enabledServices.FindIndex(svc => svc.ServiceID.Equals(data.ServiceID)))];
-            await _sqlService.InsertDataAsync(history, (long)Settings.HistoryLimit).ConfigureAwait(false);
+            await _sqlService.InsertOrUpdateDataAsync(history, (long)Settings.HistoryLimit).ConfigureAwait(false);
         }
         else
         {
@@ -176,6 +176,20 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
             if (!_recentTexts.Contains(InputText))
                 _recentTexts.Insert(0, InputText);
         }
+    }
+
+    [RelayCommand]
+    private void TemporaryTranslate(Service service)
+    {
+        if (service.TemporaryDisplay)
+            return;
+
+        service.TemporaryDisplay = true;
+
+        if (!SingleTranslateCommand.CanExecute(service))
+            return;
+
+        SingleTranslateCommand.Execute(service);
     }
 
     [RelayCommand(IncludeCancelCommand = true, CanExecute = nameof(CanTranslate))]
@@ -238,7 +252,9 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
 
         if (Settings.HistoryLimit > 0)
         {
-            await _sqlService.InsertDataAsync(history, (long)Settings.HistoryLimit).ConfigureAwait(false);
+            var enabledServices = TranslateInstance.Services.Where(x => x.IsEnabled).ToList();
+            history.Data = [.. history.Data.OrderBy(data => enabledServices.FindIndex(svc => svc.ServiceID.Equals(data.ServiceID)))];
+            await _sqlService.InsertOrUpdateDataAsync(history, (long)Settings.HistoryLimit).ConfigureAwait(false);
         }
     }
 
@@ -261,7 +277,7 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
         history?.GetData(service)?.TransBackResult = backResult;
 
         if (Settings.HistoryLimit > 0 && history != null)
-            await _sqlService.InsertDataAsync(history, (long)Settings.HistoryLimit).ConfigureAwait(false);
+            await _sqlService.InsertOrUpdateDataAsync(history, (long)Settings.HistoryLimit).ConfigureAwait(false);
     }
 
     [RelayCommand]
@@ -1366,11 +1382,12 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
 
     private void ResetAllServices()
     {
-        var plugins = TranslateInstance.Services.Where(x => x.IsEnabled).Select(x => x.Plugin).ToList();
-        foreach (var plugin in plugins)
+        var services = TranslateInstance.Services.Where(x => x.IsEnabled).ToList();
+        foreach (var service in services)
         {
-            if (plugin is ITranslatePlugin tPlugin) tPlugin.Reset();
-            else if (plugin is IDictionaryPlugin dPlugin) dPlugin.Reset();
+            service.TemporaryDisplay = false;
+            if (service.Plugin is ITranslatePlugin tPlugin) tPlugin.Reset();
+            else if (service.Plugin is IDictionaryPlugin dPlugin) dPlugin.Reset();
         }
     }
 

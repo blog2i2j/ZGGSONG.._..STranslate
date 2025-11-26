@@ -69,7 +69,7 @@ public class SqlService
     /// <param name="history"></param>
     /// <param name="count"></param>
     /// <returns></returns>
-    public async Task InsertDataAsync(HistoryModel history, long count)
+    public async Task InsertOrUpdateDataAsync(HistoryModel history, long count)
     {
         await using var connection = new SqliteConnection(DataLocation.DbConnectionString);
         await connection.OpenAsync();
@@ -322,12 +322,12 @@ public class SqlService
     }
 
     /// <summary>
-    ///     插入数据
+    ///     插入数据(如果存在则更新)
     /// </summary>
     /// <param name="history"></param>
     /// <param name="count"></param>
     /// <param name="forceWrite"></param>
-    public void InsertData(HistoryModel history, long count, bool forceWrite = false)
+    public void InsertOrUpdateData(HistoryModel history, long count, bool forceWrite = false)
     {
         using var connection = new SqliteConnection(DataLocation.DbConnectionString);
         connection.Open();
