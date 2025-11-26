@@ -181,13 +181,10 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
     [RelayCommand]
     private void TemporaryTranslate(Service service)
     {
-        if (service.TemporaryDisplay)
+        if (!SingleTranslateCommand.CanExecute(service) || service.TemporaryDisplay)
             return;
 
         service.TemporaryDisplay = true;
-
-        if (!SingleTranslateCommand.CanExecute(service))
-            return;
 
         SingleTranslateCommand.Execute(service);
     }

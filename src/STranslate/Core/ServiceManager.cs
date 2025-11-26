@@ -185,7 +185,9 @@ public class ServiceManager
         };
 
         // 针对翻译/词典插件，设置执行模式和自动回译选项尝试从缓存加载
-        if (service.Plugin is ITranslatePlugin || service.Plugin is IDictionaryPlugin)
+        if (metaData.PluginType != null &&
+            (typeof(ITranslatePlugin).IsAssignableFrom(metaData.PluginType) ||
+                typeof(IDictionaryPlugin).IsAssignableFrom(metaData.PluginType)))
         {
             service.ExecMode = settings?.ExecMode ?? ExecutionMode.Automatic;
             service.AutoBackTranslation = settings?.AutoBackTranslation ?? false;
