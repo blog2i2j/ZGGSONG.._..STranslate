@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 using STranslate.Core;
 using STranslate.Plugin;
 using System.Diagnostics;
@@ -42,5 +43,40 @@ public partial class AboutViewModel(Settings settings, DataProvider dataProvider
         {
             Process.Start("explorer.exe", settingsFolderPath);
         }
+    }
+
+    [RelayCommand]
+    private void Backup()
+    {
+        var saveFileDialog = new SaveFileDialog
+        {
+            Title = "Select Backup File",
+            Filter = "zip(*.zip)|*.zip",
+            FileName = $"stranslate_backup_{DateTime.Now:yyyyMMddHHmmss}"
+        };
+
+        if (saveFileDialog.ShowDialog() != true)
+            return;
+
+        var filePath = saveFileDialog.FileName;
+        string[] args = ["backup", "-m", "backup", "-a", filePath, "-f", DataLocation.PluginsDirectory, "-f", DataLocation.SettingsDirectory, "-d", "3"];
+        Utilities.ExecuteProgram(DataLocation.HostExePath, args);
+        App.Current.Shutdown();
+    }
+
+    [RelayCommand]
+    private void Restore()
+    {
+        var openFileDialog = new OpenFileDialog
+        {
+            Title = "Select Restore File",
+            Filter = "zip(*.zip)|*.zip"
+        };
+        if (openFileDialog.ShowDialog() != true)
+            return;
+        var filePath = openFileDialog.FileName;
+        string[] args = ["backup", "-m", "restore", "-a", filePath, "-s", Constant.Plugins, "-t", DataLocation.PluginsDirectory, "-s", Constant.Settings, "-t", DataLocation.SettingsDirectory, "-d", "3"];
+        Utilities.ExecuteProgram(DataLocation.HostExePath, args);
+        App.Current.Shutdown();
     }
 }

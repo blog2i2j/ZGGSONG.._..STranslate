@@ -72,6 +72,20 @@
                     </ikw:SimpleStackPanel>
                 </ui:SettingsCard>
 
+                <ui:SettingsCard Header="备份">
+                    <ui:SettingsCard.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.BackpackAdd_20_Regular}" />
+                    </ui:SettingsCard.HeaderIcon>
+                    <Button Command="{Binding BackupCommand}" Content="创建备份" />
+                </ui:SettingsCard>
+
+                <ui:SettingsCard Header="恢复">
+                    <ui:SettingsCard.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Backpack_20_Regular}" />
+                    </ui:SettingsCard.HeaderIcon>
+                    <Button Command="{Binding RestoreCommand}" Content="恢复备份" />
+                </ui:SettingsCard>
+
                 <ui:SettingsCard Header="{DynamicResource LogLevel}">
                     <ui:SettingsCard.HeaderIcon>
                         <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Print_20_Regular}" />

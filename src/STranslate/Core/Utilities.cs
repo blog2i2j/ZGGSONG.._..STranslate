@@ -832,6 +832,38 @@ public class Utilities
         return runningProcesses.Length > 1;
     }
 
+    public static void ExecuteProgram(string filename, string[] args)
+    {
+        // 使用 StringBuilder 优化字符串拼接
+        var argumentsBuilder = new StringBuilder();
+        foreach (var arg in args)
+        {
+            if (argumentsBuilder.Length > 0)
+                argumentsBuilder.Append(' ');
+
+            // 只有包含空格或特殊字符时才添加引号
+            if (arg.Contains(' ') || arg.Contains('"') || arg.Contains('\t'))
+            {
+                argumentsBuilder.Append('"')
+                    .Append(arg.Replace("\"", "\\\""))
+                    .Append('"');
+            }
+            else
+            {
+                argumentsBuilder.Append(arg);
+            }
+        }
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = filename,
+            Arguments = argumentsBuilder.ToString(),
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+
+        using var process = Process.Start(startInfo);
+    }
+
     /// <summary>
     /// 执行外部程序
     /// </summary>
