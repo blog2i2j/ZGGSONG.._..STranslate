@@ -72,8 +72,7 @@
                     </ikw:SimpleStackPanel>
                 </ui:SettingsCard>
 
-
-                <ui:SettingsExpander Description="支持本地和WebDav的备份/恢复，过程中会自动重启软件" Header="备份方式">
+                <ui:SettingsExpander Description="{DynamicResource BackupMethodDescription}" Header="{DynamicResource BackupMethod}">
                     <ui:SettingsExpander.HeaderIcon>
                         <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.FolderZip_20_Regular}" />
                     </ui:SettingsExpander.HeaderIcon>
@@ -85,19 +84,19 @@
                         SelectedValuePath="Value" />
 
                     <ui:SettingsExpander.Items>
-                        <ui:SettingsCard Header="WebDav 地址" Visibility="{Binding Settings.Backup.Type, Converter={cnvt:BackupTypeVisibilityConverter}, ConverterParameter=WebDav}">
+                        <ui:SettingsCard Header="{DynamicResource WebDavAddress}" Visibility="{Binding Settings.Backup.Type, Converter={cnvt:BackupTypeVisibilityConverter}, ConverterParameter=WebDav}">
                             <ui:SettingsCard.HeaderIcon>
                                 <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Globe_20_Regular}" />
                             </ui:SettingsCard.HeaderIcon>
                             <TextBox MinWidth="200" Text="{Binding Settings.Backup.Address}" />
                         </ui:SettingsCard>
-                        <ui:SettingsCard Header="WebDav 用户名" Visibility="{Binding Settings.Backup.Type, Converter={cnvt:BackupTypeVisibilityConverter}, ConverterParameter=WebDav}">
+                        <ui:SettingsCard Header="{DynamicResource WebDavUsername}" Visibility="{Binding Settings.Backup.Type, Converter={cnvt:BackupTypeVisibilityConverter}, ConverterParameter=WebDav}">
                             <ui:SettingsCard.HeaderIcon>
                                 <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Person_20_Regular}" />
                             </ui:SettingsCard.HeaderIcon>
                             <TextBox MinWidth="200" Text="{Binding Settings.Backup.Username}" />
                         </ui:SettingsCard>
-                        <ui:SettingsCard Header="WebDav 密码" Visibility="{Binding Settings.Backup.Type, Converter={cnvt:BackupTypeVisibilityConverter}, ConverterParameter=WebDav}">
+                        <ui:SettingsCard Header="{DynamicResource WebDavPassword}" Visibility="{Binding Settings.Backup.Type, Converter={cnvt:BackupTypeVisibilityConverter}, ConverterParameter=WebDav}">
                             <ui:SettingsCard.HeaderIcon>
                                 <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Password_20_Regular}" />
                             </ui:SettingsCard.HeaderIcon>
@@ -107,11 +106,11 @@
                                 plugin:PasswordBoxAssistant.Password="{Binding Settings.Backup.Password}" />
                         </ui:SettingsCard>
 
-                        <ui:SettingsCard Header="备份">
-                            <Button Command="{Binding BackupCommand}" Content="创建备份" />
+                        <ui:SettingsCard Header="{DynamicResource Backup}">
+                            <Button Command="{Binding BackupCommand}" Content="{DynamicResource CreateBackup}" />
                         </ui:SettingsCard>
-                        <ui:SettingsCard Header="恢复">
-                            <Button Command="{Binding RestoreCommand}" Content="恢复备份" />
+                        <ui:SettingsCard Header="{DynamicResource Restore}">
+                            <Button Command="{Binding RestoreCommand}" Content="{DynamicResource RestoreBackup}" />
                         </ui:SettingsCard>
                     </ui:SettingsExpander.Items>
                 </ui:SettingsExpander>

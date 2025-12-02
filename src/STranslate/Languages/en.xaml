@@ -233,7 +233,6 @@
     <sys:String x:Key="LogLevel">Log Level</sys:String>
     <sys:String x:Key="ConfirmRestartAndBackup">Confirm restart and backup configuration?</sys:String>
     <sys:String x:Key="ConfirmRestartAndRestore">Confirm restart and restore configuration?</sys:String>
-    <sys:String x:Key="BackupType">Backup Type</sys:String>
     <sys:String x:Key="SelectBackupFile">Select Backup File</sys:String>
     <sys:String x:Key="SelectRestoreFile">Select Restore File</sys:String>
     <sys:String x:Key="BackupConfigSuccess">Configuration backup successful [{0}]</sys:String>
@@ -247,6 +246,15 @@
     <sys:String x:Key="DeleteFailed">Delete failed: {0} {1}</sys:String>
     <sys:String x:Key="RenameFailed">Rename failed: {0} {1}</sys:String>
     <sys:String x:Key="RenameException">Rename exception: {0}</sys:String>
+    <sys:String x:Key="BackupMethod">Backup Method</sys:String>
+    <sys:String x:Key="BackupMethodDescription">Supports local and WebDav backup/restore. The software will automatically restart during the process</sys:String>
+    <sys:String x:Key="WebDavAddress">WebDav Address</sys:String>
+    <sys:String x:Key="WebDavUsername">WebDav Username</sys:String>
+    <sys:String x:Key="WebDavPassword">WebDav Password</sys:String>
+    <sys:String x:Key="Backup">Backup</sys:String>
+    <sys:String x:Key="CreateBackup">Create Backup</sys:String>
+    <sys:String x:Key="Restore">Restore</sys:String>
+    <sys:String x:Key="RestoreBackup">Restore Backup</sys:String>
 
     <!--  // Common //  -->
     <sys:String x:Key="Add">Add</sys:String>

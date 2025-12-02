@@ -233,7 +233,6 @@
     <sys:String x:Key="LogLevel">日誌等級</sys:String>
     <sys:String x:Key="ConfirmRestartAndBackup">是否確認重啟並備份配置</sys:String>
     <sys:String x:Key="ConfirmRestartAndRestore">是否確認重啟並恢復配置</sys:String>
-    <sys:String x:Key="BackupType">備份類型</sys:String>
     <sys:String x:Key="SelectBackupFile">選擇備份檔案</sys:String>
     <sys:String x:Key="SelectRestoreFile">選擇恢復檔案</sys:String>
     <sys:String x:Key="BackupConfigSuccess">備份配置成功 [{0}]</sys:String>
@@ -247,6 +246,15 @@
     <sys:String x:Key="DeleteFailed">刪除失敗：{0} {1}</sys:String>
     <sys:String x:Key="RenameFailed">重新命名失敗：{0} {1}</sys:String>
     <sys:String x:Key="RenameException">重新命名異常：{0}</sys:String>
+    <sys:String x:Key="BackupMethod">備份方式</sys:String>
+    <sys:String x:Key="BackupMethodDescription">支援本地和WebDav的備份/恢復，過程中會自動重啟軟體</sys:String>
+    <sys:String x:Key="WebDavAddress">WebDav 地址</sys:String>
+    <sys:String x:Key="WebDavUsername">WebDav 使用者名稱</sys:String>
+    <sys:String x:Key="WebDavPassword">WebDav 密碼</sys:String>
+    <sys:String x:Key="Backup">備份</sys:String>
+    <sys:String x:Key="CreateBackup">建立備份</sys:String>
+    <sys:String x:Key="Restore">恢復</sys:String>
+    <sys:String x:Key="RestoreBackup">恢復備份</sys:String>
 
     <!--  // Common //  -->
     <sys:String x:Key="Add">新增</sys:String>
