@@ -299,6 +299,8 @@ public partial class App : ISingleInstanceApp, INavigation, IDisposable
         if (!SingleInstance<App>.InitializeAsFirstInstance())
             return;
 
+        TryMoveTmpConfigDirectory();
+
         using var application = new App();
 
         if (NeedAdmin())
@@ -312,6 +314,32 @@ public partial class App : ISingleInstanceApp, INavigation, IDisposable
         VelopackApp.Build().Run();
         application.InitializeComponent();
         application.Run();
+    }
+
+    private static void TryMoveTmpConfigDirectory()
+    {
+        try
+        {
+            if (!Directory.Exists(DataLocation.TmpConfigDirectory))
+                return;
+            
+            FilesFolders.CopyAll(DataLocation.TmpConfigDirectory, DataLocation.PortableDataPath);
+        }
+        catch
+        {
+            Debug.WriteLine("Cannot move tmp config directory to portable data directory.");
+        }
+        finally
+        {
+            try
+            {
+                Directory.Delete(DataLocation.TmpConfigDirectory, true);
+            }
+            catch
+            {
+                Debug.WriteLine("Cannot delete tmp config directory.");
+            }
+        }
     }
 
     private static bool NeedAdmin()

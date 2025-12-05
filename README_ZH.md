@@ -22,57 +22,57 @@
 
 <h1 align="center">STranslate 2.0</h1>
 
-**English** | [**简体中文**](./README_ZH.md)
+[**English**](./README.md) | **简体中文**
 
 <a href="https://trendshift.io/repositories/6979" target="_blank"><img src="https://trendshift.io/api/badge/repositories/6979" alt="ZGGSONG%2FSTranslate | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-<p align="center">A <strong>ready-to-go</strong> translation and OCR tool developed with WPF.</p>
+<p align="center">WPF 开发的一款<strong>即用即走</strong>的翻译、OCR工具</p>
 
 </div>
 
-## Access
+## 访问
 
-| Overseas | Domestic |
+| 国外 | 国内 |
 | :--: | :--: |
 | **[Github](https://github.com/ZGGSONG/STranslate)** | **[Gitee](https://gitee.com/zggsong/STranslate)** |
 
-## Installation
 
-Download the latest [Release](https://github.com/ZGGSONG/STranslate/releases) version and extract it to use.
+## 安装
 
-## Usage
+下载最新 [Release](https://github.com/ZGGSONG/STranslate/releases) 版本后解压即可使用
+
+## 使用
 
 [Document](https://stranslate.zggsong.com)
 
-## Discussion
+## 讨论
 
-If you have questions, please go to [Discussions](https://github.com/ZGGSONG/STranslate/discussions) for discussion.
+有疑问移步 [Discussions](https://github.com/ZGGSONG/STranslate/discussions) 进行讨论
 
-> If you want to join the user exchange group, you can scan the QR code below
+> 如果您想加入用户交流群，可以扫描下方二维码
 
 <img src="./images/telegram_group.jpg" Width="160" />
 
-## Support the project
+## 感谢
 
 <a href="https://jb.gg/OpenSourceSupport"><img src="./images/jb_beam.svg" /></a>
 
-## Donations
+## 打赏
 
-If you like it, you can buy the author a cup of coffee.
+觉得不错的话可以请作者喝杯阔落
 
-> Thank you to those who rewarded me [Sponsor List](Sponsor.md)
+> 感谢打赏的朋友 [赞赏列表](Sponsor.md)
 
-| WeChat | Alipay |
+| 微信 | 支付宝 |
 | :--: | :--: |
 |![wehcatpay](./images/wechatpay.jpg) | ![alipay](./images/alipay.jpg) |
 
-## Author
+## 作者
 
 **STranslate** © [zggsong](https://github.com/zggsong), Released under the [MIT](https://github.com/ZGGSONG/STranslate/blob/main/LICENSE) License.<br>
 
 > Website [Blog](https://www.zggsong.com) · GitHub [@zggsong](https://github.com/zggsong)
 
-## Star History
+## 星标历史
 
 [![Star History Chart](https://api.star-history.com/svg?repos=ZGGSONG/STranslate&type=Date)](https://star-history.com/#ZGGSONG/STranslate&Date)
-

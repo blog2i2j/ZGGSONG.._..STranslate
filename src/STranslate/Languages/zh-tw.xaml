@@ -553,4 +553,17 @@
     <sys:String x:Key="PluginTranslateAutoBackTranslationDescription">翻譯之後自動進行回譯</sys:String>
     <sys:String x:Key="PluginTranslateValidate">校驗</sys:String>
     <sys:String x:Key="PluginTranslateValidateDescription">測試 API 連接與配置是否正確</sys:String>
+
+    <!--  // Updater Service //  -->
+    <sys:String x:Key="UpdateCheck">更新檢查</sys:String>
+    <sys:String x:Key="CheckingForUpdates">正在檢查更新...</sys:String>
+    <sys:String x:Key="NoUpdateInfoFound">未找到更新資訊。</sys:String>
+    <sys:String x:Key="AlreadyLatestVersion">您已是最新版本。</sys:String>
+    <sys:String x:Key="UpdateAvailable">有可用更新</sys:String>
+    <sys:String x:Key="NewVersionFound">發現新版本 {0}。正在更新...</sys:String>
+    <sys:String x:Key="PortableDataMoveError">STranslate 無法將您的使用者配置資料移動到新更新版本。&#10;請手動將您的配置資料資料夾從 {0} 移動到 {1}</sys:String>
+    <sys:String x:Key="UpdateReady">更新準備就緒</sys:String>
+    <sys:String x:Key="UpdateFailed">更新失敗</sys:String>
+    <sys:String x:Key="UpdateFailedMessage">應用程式更新失敗。請檢查您的網路連接。</sys:String>
+    <sys:String x:Key="NewVersionTips">新版本 {0} 已可用，是否重新啟動 STranslate 以使用更新？</sys:String>
 </ResourceDictionary>
