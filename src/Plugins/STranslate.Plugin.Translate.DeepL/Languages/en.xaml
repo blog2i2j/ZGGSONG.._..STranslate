@@ -8,5 +8,12 @@
     <sys:String x:Key="STranslate_Plugin_Translate_DeepL_ApiKey_Description">Enter your DeepL key</sys:String>
     <sys:String x:Key="STranslate_Plugin_Translate_DeepL_UseProApi">API Type</sys:String>
     <sys:String x:Key="STranslate_Plugin_Translate_DeepL_UseProApi_Description">Choose whether to use the Pro API 「https://api.deepl.com」, otherwise use the Free API 「https://api-free.deepl.com」</sys:String>
+    <sys:String x:Key="STranslate_Plugin_Translate_DeepL_Usage">Usage Status</sys:String>
+    <sys:String x:Key="STranslate_Plugin_Translate_DeepL_Query">Query</sys:String>
+    <sys:String x:Key="STranslate_Plugin_Translate_DeepL_Query_Success">Query successful</sys:String>
+    <sys:String x:Key="STranslate_Plugin_Translate_DeepL_Query_Fail">Query failed</sys:String>
+    <sys:String x:Key="STranslate_Plugin_Translate_DeepL_Query_Cancel">Cancel query</sys:String>
+    <sys:String x:Key="STranslate_Plugin_Translate_DeepL_Query_Error1">Usage is empty</sys:String>
+    <sys:String x:Key="STranslate_Plugin_Translate_DeepL_Query_Error2">Usage limit is empty</sys:String>
 
 </ResourceDictionary>

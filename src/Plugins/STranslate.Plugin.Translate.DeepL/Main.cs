@@ -12,9 +12,6 @@ public class Main : TranslatePluginBase
     private Settings Settings { get; set; } = null!;
     private IPluginContext Context { get; set; } = null!;
 
-    private const string FreeUrl = "https://api-free.deepl.com/v2/translate";
-    private const string ProUrl = "https://api.deepl.com/v2/translate";
-
     public override Control GetSettingUI()
     {
         _viewModel ??= new SettingsViewModel(Context, Settings);
@@ -112,7 +109,7 @@ public class Main : TranslatePluginBase
         Settings = context.LoadSettingStorage<Settings>();
     }
 
-    public override void Dispose() { }
+    public override void Dispose() => _viewModel?.Dispose();
 
     public override async Task TranslateAsync(TranslateRequest request, TranslateResult result, CancellationToken cancellationToken = default)
     {
@@ -134,15 +131,17 @@ public class Main : TranslatePluginBase
             target_lang = targetStr,
         };
 
-        var option = new Options
-        {
-            Headers = new Dictionary<string, string>
+        var option = string.IsNullOrEmpty(Settings.ApiKey)
+            ? default :
+            new Options
             {
-                { "Authorization", "DeepL-Auth-Key " + Settings.ApiKey }
-            }
-        };
+                Headers = new Dictionary<string, string>
+                {
+                    { "Authorization", "DeepL-Auth-Key " + Settings.ApiKey }
+                }
+            };
 
-        var url = Settings.UseProApi ? ProUrl : FreeUrl;
+        var url = Settings.UseProApi ? Constant.ProUrl : Constant.FreeUrl;
         var response = await Context.HttpService.PostAsync(url, content, option, cancellationToken);
 
         var jsonNode = JsonNode.Parse(response);

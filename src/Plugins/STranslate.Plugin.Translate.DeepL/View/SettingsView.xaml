@@ -27,12 +27,32 @@
 
         <ui:SettingsCard Description="{DynamicResource STranslate_Plugin_Translate_DeepL_UseProApi_Description}" Header="{DynamicResource STranslate_Plugin_Translate_DeepL_UseProApi}">
             <ui:SettingsCard.HeaderIcon>
-                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.WindowConsole_20_Regular}" />
+                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.PersonStar_20_Regular}" />
             </ui:SettingsCard.HeaderIcon>
             <ui:ToggleSwitch
                 IsOn="{Binding UseProApi}"
                 OffContent="{DynamicResource Off}"
                 OnContent="{DynamicResource On}" />
         </ui:SettingsCard>
+
+        <ui:SettingsCard Header="{DynamicResource STranslate_Plugin_Translate_DeepL_Usage}">
+            <ui:SettingsCard.HeaderIcon>
+                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.DataUsage_20_Regular}" />
+            </ui:SettingsCard.HeaderIcon>
+
+            <ikw:SimpleStackPanel Orientation="Horizontal" Spacing="4">
+                <ui:ProgressRing
+                    Width="20"
+                    Height="20"
+                    VerticalAlignment="Center"
+                    Background="LightGray"
+                    IsIndeterminate="False"
+                    Value="{Binding Usage}" />
+                <TextBlock VerticalAlignment="Center" Text="{Binding UsageStr}" />
+
+                <Button Command="{Binding QueryUsageCommand}" Content="{DynamicResource STranslate_Plugin_Translate_DeepL_Query}" />
+            </ikw:SimpleStackPanel>
+        </ui:SettingsCard>
+
     </ikw:SimpleStackPanel>
 </UserControl>
