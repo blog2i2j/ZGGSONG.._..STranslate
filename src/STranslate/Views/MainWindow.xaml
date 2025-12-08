@@ -251,7 +251,12 @@
                     PlayAudioCommand="{Binding PlayAudioCommand}"
                     PlayAudioUrlCommand="{Binding PlayAudioUrlCommand}"
                     RetryCommand="{Binding SingleTranslateCommand}"
+                    ShowBackTranslation="{Binding Settings.ShowBackTranslation}"
+                    ShowCamelCase="{Binding Settings.ShowCamelCase}"
+                    ShowInsert="{Binding Settings.ShowInsert}"
+                    ShowPascalCase="{Binding Settings.ShowPascalCase}"
                     ShowPrompt="{Binding Settings.ShowPromptButton}"
+                    ShowSnakeCase="{Binding Settings.ShowSnakeCase}"
                     TransBackCommand="{Binding SingleTransBackCommand}" />
             </StackPanel>
         </ui:ScrollViewerEx>

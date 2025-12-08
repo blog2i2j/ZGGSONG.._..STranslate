@@ -169,4 +169,69 @@ public class OutputControl : ItemsControl
             typeof(ICommand),
             typeof(OutputControl));
 
+    public bool ShowPascalCase
+    {
+        get => (bool)GetValue(ShowPascalCaseProperty);
+        set => SetValue(ShowPascalCaseProperty, value);
+    }
+
+    public static readonly DependencyProperty ShowPascalCaseProperty =
+        DependencyProperty.Register(
+            nameof(ShowPascalCase),
+            typeof(bool),
+            typeof(OutputControl),
+            new PropertyMetadata(true));
+
+    public bool ShowCamelCase
+    {
+        get => (bool)GetValue(ShowCamelCaseProperty);
+        set => SetValue(ShowCamelCaseProperty, value);
+    }
+
+    public static readonly DependencyProperty ShowCamelCaseProperty =
+        DependencyProperty.Register(
+            nameof(ShowCamelCase),
+            typeof(bool),
+            typeof(OutputControl),
+            new PropertyMetadata(false));
+
+    public bool ShowSnakeCase
+    {
+        get => (bool)GetValue(ShowSnakeCaseProperty);
+        set => SetValue(ShowSnakeCaseProperty, value);
+    }
+
+    public static readonly DependencyProperty ShowSnakeCaseProperty =
+        DependencyProperty.Register(
+            nameof(ShowSnakeCase),
+            typeof(bool),
+            typeof(OutputControl),
+            new PropertyMetadata(true));
+
+    public bool ShowInsert
+    {
+        get => (bool)GetValue(ShowInsertProperty);
+        set => SetValue(ShowInsertProperty, value);
+    }
+
+    public static readonly DependencyProperty ShowInsertProperty =
+        DependencyProperty.Register(
+            nameof(ShowInsert),
+            typeof(bool),
+            typeof(OutputControl),
+            new PropertyMetadata(true));
+
+    public bool ShowBackTranslation
+    {
+        get => (bool)GetValue(ShowBackTranslationProperty);
+        set => SetValue(ShowBackTranslationProperty, value);
+    }
+
+    public static readonly DependencyProperty ShowBackTranslationProperty =
+        DependencyProperty.Register(
+            nameof(ShowBackTranslation),
+            typeof(bool),
+            typeof(OutputControl),
+            new PropertyMetadata(true));
+
 }

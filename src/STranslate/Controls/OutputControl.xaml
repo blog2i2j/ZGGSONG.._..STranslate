@@ -632,34 +632,40 @@
                                     Command="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=CopyPascalCaseCommand}"
                                     CommandParameter="{Binding Plugin.TransResult.Text}"
                                     Icon="{x:Static ui:FluentSystemIcons.TextCaseTitle_20_Regular}"
-                                    ToolTip="{DynamicResource CopyAsPascalCase}" />
+                                    ToolTip="{DynamicResource CopyAsPascalCase}"
+                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=ShowPascalCase, Converter={cnvt:BoolToVisibilityConverter}}" />
                                 <control:IconButton
                                     Command="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=CopyCamelCaseCommand}"
                                     CommandParameter="{Binding Plugin.TransResult.Text}"
                                     Icon="{x:Static ui:FluentSystemIcons.TextChangeCase_20_Regular}"
-                                    ToolTip="{DynamicResource CopyAsCamelCase}" />
+                                    ToolTip="{DynamicResource CopyAsCamelCase}"
+                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=ShowCamelCase, Converter={cnvt:BoolToVisibilityConverter}}" />
                                 <control:IconButton
                                     Command="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=CopySnakeCaseCommand}"
                                     CommandParameter="{Binding Plugin.TransResult.Text}"
                                     Icon="{x:Static ui:FluentSystemIcons.TextCaseLowercase_20_Regular}"
-                                    ToolTip="{DynamicResource CopyAsSnakeCase}" />
+                                    ToolTip="{DynamicResource CopyAsSnakeCase}"
+                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=ShowSnakeCase, Converter={cnvt:BoolToVisibilityConverter}}" />
                                 <control:IconButton
                                     Command="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=InsertCommand}"
                                     CommandParameter="{Binding Plugin.TransResult.Text}"
                                     Icon="{x:Static ui:FluentSystemIcons.TextHanging_20_Regular}"
-                                    ToolTip="{DynamicResource InsertText}" />
-                                <control:IconButton
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=TransBackCommand}"
-                                    CommandParameter="{Binding}"
-                                    Icon="{x:Static ui:FluentSystemIcons.Flash_20_Regular}"
-                                    ToolTip="{DynamicResource BackTranslation}"
-                                    Visibility="{Binding Options.AutoBackTranslation, Converter={cnvt:BoolToVisibilityInverseConverter}}" />
-                                <control:IconButton
-                                    Command="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=TransBackCommand}"
-                                    CommandParameter="{Binding}"
-                                    Icon="{x:Static ui:FluentSystemIcons.FlashAuto_20_Regular}"
-                                    ToolTip="{DynamicResource BackTranslation}"
-                                    Visibility="{Binding Options.AutoBackTranslation, Converter={cnvt:BoolToVisibilityConverter}}" />
+                                    ToolTip="{DynamicResource InsertText}"
+                                    Visibility="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=ShowInsert, Converter={cnvt:BoolToVisibilityConverter}}" />
+                                <StackPanel Orientation="Horizontal" Visibility="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=ShowBackTranslation, Converter={cnvt:BoolToVisibilityConverter}}">
+                                    <control:IconButton
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=TransBackCommand}"
+                                        CommandParameter="{Binding}"
+                                        Icon="{x:Static ui:FluentSystemIcons.Flash_20_Regular}"
+                                        ToolTip="{DynamicResource BackTranslation}"
+                                        Visibility="{Binding Options.AutoBackTranslation, Converter={cnvt:BoolToVisibilityInverseConverter}}" />
+                                    <control:IconButton
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType=control:OutputControl}, Path=TransBackCommand}"
+                                        CommandParameter="{Binding}"
+                                        Icon="{x:Static ui:FluentSystemIcons.FlashAuto_20_Regular}"
+                                        ToolTip="{DynamicResource BackTranslation}"
+                                        Visibility="{Binding Options.AutoBackTranslation, Converter={cnvt:BoolToVisibilityConverter}}" />
+                                </StackPanel>
                             </ikw:SimpleStackPanel>
                         </Grid>
                         <ikw:SimpleStackPanel

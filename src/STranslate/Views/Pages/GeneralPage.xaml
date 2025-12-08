@@ -221,26 +221,6 @@
                     </ui:SettingsCard>
                 </control:CardGroup>
 
-                <!--<ui:SettingsExpander Description="{DynamicResource General_CopyAfterTranslationDescription}" Header="{DynamicResource General_CopyAfterTranslation}">
-                    <ui:SettingsExpander.HeaderIcon>
-                        <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.CropSparkle_24_Regular}" />
-                    </ui:SettingsExpander.HeaderIcon>
-                    <ComboBox
-                        DisplayMemberPath="Display"
-                        ItemsSource="{Binding DataProvider.CopyAfterTranslations}"
-                        SelectedValue="{Binding Settings.CopyAfterTranslation}"
-                        SelectedValuePath="Value" />
-
-                    <ui:SettingsExpander.Items>
-                        <ui:SettingsCard Header="{DynamicResource General_CopyAfterTranslationNotAutomatic}">
-                            <ui:ToggleSwitch
-                                IsOn="{Binding Settings.CopyAfterTranslationNotAutomatic}"
-                                OffContent="{DynamicResource Disable}"
-                                OnContent="{DynamicResource Enable}" />
-                        </ui:SettingsCard>
-                    </ui:SettingsExpander.Items>
-                </ui:SettingsExpander>-->
-
                 <ui:SettingsCard Description="{DynamicResource General_TranslateOnPasteDescription}" Header="{DynamicResource General_TranslateOnPaste}">
                     <ui:SettingsCard.HeaderIcon>
                         <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.ClipboardArrowRight_20_Regular}" />
@@ -457,15 +437,72 @@
 
                 </control:CardGroup>
 
-                <ui:SettingsCard Description="{DynamicResource General_ShowPromptDescription}" Header="{DynamicResource General_ShowPrompt}">
-                    <ui:SettingsCard.HeaderIcon>
-                        <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Chat_20_Regular}" />
-                    </ui:SettingsCard.HeaderIcon>
-                    <ui:ToggleSwitch
-                        IsOn="{Binding Settings.ShowPromptButton}"
-                        OffContent="{DynamicResource Hide}"
-                        OnContent="{DynamicResource Show}" />
-                </ui:SettingsCard>
+                <ui:SettingsExpander Header="{DynamicResource General_OutputShowingControl}">
+                    <ui:SettingsExpander.HeaderIcon>
+                        <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.PanelBottom_20_Regular}" />
+                    </ui:SettingsExpander.HeaderIcon>
+                    <ui:SettingsExpander.Items>
+                        <ui:SettingsCard Header="{DynamicResource General_ShowPascalCase}">
+                            <ui:SettingsCard.HeaderIcon>
+                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.TextCaseTitle_20_Regular}" />
+                            </ui:SettingsCard.HeaderIcon>
+                            <ui:ToggleSwitch
+                                IsOn="{Binding Settings.ShowPascalCase}"
+                                OffContent="{DynamicResource Hide}"
+                                OnContent="{DynamicResource Show}" />
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard Header="{DynamicResource General_ShowCamelCase}">
+                            <ui:SettingsCard.HeaderIcon>
+                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.TextChangeCase_20_Regular}" />
+                            </ui:SettingsCard.HeaderIcon>
+                            <ui:ToggleSwitch
+                                IsOn="{Binding Settings.ShowCamelCase}"
+                                OffContent="{DynamicResource Hide}"
+                                OnContent="{DynamicResource Show}" />
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard Header="{DynamicResource General_ShowSnakeCase}">
+                            <ui:SettingsCard.HeaderIcon>
+                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.TextCaseLowercase_20_Regular}" />
+                            </ui:SettingsCard.HeaderIcon>
+                            <ui:ToggleSwitch
+                                IsOn="{Binding Settings.ShowSnakeCase}"
+                                OffContent="{DynamicResource Hide}"
+                                OnContent="{DynamicResource Show}" />
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard Header="{DynamicResource General_ShowInsert}">
+                            <ui:SettingsCard.HeaderIcon>
+                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.TextHanging_20_Regular}" />
+                            </ui:SettingsCard.HeaderIcon>
+                            <ui:ToggleSwitch
+                                IsOn="{Binding Settings.ShowInsert}"
+                                OffContent="{DynamicResource Hide}"
+                                OnContent="{DynamicResource Show}" />
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard Header="{DynamicResource General_ShowBackTranslation}">
+                            <ui:SettingsCard.HeaderIcon>
+                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Flash_20_Regular}" />
+                            </ui:SettingsCard.HeaderIcon>
+                            <ui:ToggleSwitch
+                                IsOn="{Binding Settings.ShowBackTranslation}"
+                                OffContent="{DynamicResource Hide}"
+                                OnContent="{DynamicResource Show}" />
+                        </ui:SettingsCard>
+
+                        <ui:SettingsCard Description="{DynamicResource General_ShowPromptDescription}" Header="{DynamicResource General_ShowPrompt}">
+                            <ui:SettingsCard.HeaderIcon>
+                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Chat_20_Regular}" />
+                            </ui:SettingsCard.HeaderIcon>
+                            <ui:ToggleSwitch
+                                IsOn="{Binding Settings.ShowPromptButton}"
+                                OffContent="{DynamicResource Hide}"
+                                OnContent="{DynamicResource Show}" />
+                        </ui:SettingsCard>
+                    </ui:SettingsExpander.Items>
+                </ui:SettingsExpander>
 
                 <ui:SettingsCard Header="{DynamicResource General_Language}">
                     <ui:SettingsCard.HeaderIcon>

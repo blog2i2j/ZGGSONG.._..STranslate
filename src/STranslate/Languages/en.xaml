@@ -72,6 +72,12 @@
     <sys:String x:Key="General_ShowHistoryNavigationDescription">Whether to display forward/backward history translation navigation icons on the main interface.</sys:String>
     <sys:String x:Key="General_FontSize">Font Size</sys:String>
     <sys:String x:Key="General_FontSizeDescription">Adjust font size for all elements except the right-click context menu</sys:String>
+    <sys:String x:Key="General_OutputShowingControl">Output Display Control</sys:String>
+    <sys:String x:Key="General_ShowPascalCase">Show PascalCase copy button</sys:String>
+    <sys:String x:Key="General_ShowCamelCase">Show camelCase copy button</sys:String>
+    <sys:String x:Key="General_ShowSnakeCase">Show snake_case copy button</sys:String>
+    <sys:String x:Key="General_ShowInsert">Show insert text button</sys:String>
+    <sys:String x:Key="General_ShowBackTranslation">Show back translation button</sys:String>
     <sys:String x:Key="General_ShowPrompt">Show Prompt</sys:String>
     <sys:String x:Key="General_ShowPromptDescription">Whether to display the prompt switch button for AI translation services on the main interface</sys:String>
     <sys:String x:Key="General_FontFamily">FontFamily</sys:String>

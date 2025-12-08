@@ -72,6 +72,12 @@
     <sys:String x:Key="General_ShowHistoryNavigationDescription">主界面是否显示向前/向后历史翻译记录导航图标。</sys:String>
     <sys:String x:Key="General_FontSize">字体大小</sys:String>
     <sys:String x:Key="General_FontSizeDescription">调整除「右键菜单」外的所有字体大小</sys:String>
+    <sys:String x:Key="General_OutputShowingControl">输出控件显示控制</sys:String>
+    <sys:String x:Key="General_ShowPascalCase">显示大驼峰复制按钮</sys:String>
+    <sys:String x:Key="General_ShowCamelCase">显示小驼峰复制按钮</sys:String>
+    <sys:String x:Key="General_ShowSnakeCase">显示蛇形复制按钮</sys:String>
+    <sys:String x:Key="General_ShowInsert">显示插入文本按钮</sys:String>
+    <sys:String x:Key="General_ShowBackTranslation">显示回译按钮</sys:String>
     <sys:String x:Key="General_ShowPrompt">提示词</sys:String>
     <sys:String x:Key="General_ShowPromptDescription">主界面是否显示AI翻译服务的提示词切换按钮</sys:String>
     <sys:String x:Key="General_FontFamily">字体</sys:String>

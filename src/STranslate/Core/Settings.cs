@@ -111,6 +111,12 @@ public partial class Settings : ObservableObject
     }
     [ObservableProperty] public partial double MainWindowMaxHeight { get; set; } = 800;
 
+    [ObservableProperty] public partial bool ShowPascalCase { get; set; } = true;
+    [ObservableProperty] public partial bool ShowCamelCase { get; set; } = false;
+    [ObservableProperty] public partial bool ShowSnakeCase { get; set; } = true;
+    [ObservableProperty] public partial bool ShowInsert { get; set; } = true;
+    [ObservableProperty] public partial bool ShowBackTranslation { get; set; } = true;
+
     /// <summary>
     /// 主界面Llm服务是否显示提示词按钮
     /// </summary>
