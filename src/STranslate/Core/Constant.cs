@@ -48,15 +48,20 @@ public class Constant
 
     public static readonly List<string> PrePluginIDs =
     [
-        "3410e7de989340938301abd6fcf8cc4b", //WeChatOCR
+        "64f812516673408ab5b59e56720bd641", //BaiduOCR
+        "8eb80c0391314256a4058b464d77946a", //OpenAIOCR
+        "3410e7de989340938301abd6fcf8cc4b", //WeChatOCRBuiltIn
+        "86ec10628e754d41921d24387ec6e815", //Baidu
         "474b5fe844d9455ba0c59f75c1424f0d", //BigModel
-        "4ed3beaab50842e6851a2e4bdbbeccae", //BingDict
+        "09d6beef9b1f4891a4a0d8a8dbf510d1", //DeepL
         "0b5d84917783415d865032f1d6e2877f", //GoogleBuiltIn
-        "0f6892a390a543709926092aba510273", //KingSoftDict
+        "0f6892a390a543709926092aba510273", //ICibaDict
+        "2d6f6831fd114463bfdebfd8ee85e549", //MicrosoftBuiltIn
         "9e44abfa040e443c9ab48205683082f4", //MTranServer
         "76b14a8d707041c891a2dcd2f74be9c1", //OpenAI
         "2cc83275790ba8ce96b31c4fe0655743", //TransmartBuiltIn
-        "7a3ab25875294602b3afc4ae15fec627", //MicrosoftTts
+        "2c1b2a2fa1e24ae79b7dc73bdea35159", //YandexBuiltIn
+        "7a3ab25875294602b3afc4ae15fec627", //MicrosoftEdgeTts
         "d9537be74d23438ca581fd6d04e1d112", //EudictVocabulary
     ];
 }
