@@ -150,66 +150,34 @@
                     <ui:SettingsExpander.Items>
 
                         <ui:SettingsCard Header="{DynamicResource Version}">
-                            <Button Margin="0,0,-28,0" Command="{Binding CheckUpdateCommand}">
-                                <ui:IconAndText Content="{DynamicResource CheckUpdate}" Icon="{x:Static ui:FluentSystemIcons.GlobeArrowUp_20_Regular}" />
-                            </Button>
+                            <ikw:SimpleStackPanel
+                                Margin="0,0,-28,0"
+                                Orientation="Horizontal"
+                                Spacing="4">
+                                <Button Command="{Binding CheckUpdateCommand}">
+                                    <ui:IconAndText Content="{DynamicResource CheckUpdate}" Icon="{x:Static ui:FluentSystemIcons.GlobeArrowUp_20_Regular}" />
+                                </Button>
+                                <Button Command="{Binding CheckUpdateCommand}" Style="{DynamicResource {x:Static ui:ThemeKeys.AccentButtonStyleKey}}">
+                                    <ui:IconAndText Content="赞助作者" Icon="{x:Static ui:FluentSystemIcons.DrinkCoffee_20_Filled}" />
+                                </Button>
+                            </ikw:SimpleStackPanel>
                         </ui:SettingsCard>
 
-                        <ui:SettingsCard
-                            Click="OnRepoCopy"
-                            Header="{DynamicResource CloneRepository}"
-                            IsClickEnabled="True">
-                            <TextBox
-                                x:Name="RepoTextBox"
-                                Margin="0,0,-5,0"
-                                VerticalAlignment="Center"
-                                VerticalContentAlignment="Center"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}"
-                                IsReadOnly="True"
-                                IsReadOnlyCaretVisible="False"
-                                Text="git clone https://github.com/zggsong/stranslate.git"
-                                TextAlignment="Right" />
-                            <ui:SettingsCard.ActionIcon>
-                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Copy_24_Regular}" />
-                            </ui:SettingsCard.ActionIcon>
+                        <ui:SettingsCard Header="{DynamicResource Website}">
+                            <ikw:SimpleStackPanel Orientation="Horizontal" Spacing="6">
+                                <ui:HyperlinkButton Content="官网" NavigateUri="https://ai.baidu.com/tech/ocr" />
+                                <ui:HyperlinkButton Content="群组" NavigateUri="https://ai.baidu.com/tech/ocr" />
+                                <ui:HyperlinkButton Content="Github" NavigateUri="https://ai.baidu.com/tech/ocr" />
+                                <ui:HyperlinkButton Content="Issue" NavigateUri="https://ai.baidu.com/tech/ocr" />
+                            </ikw:SimpleStackPanel>
                         </ui:SettingsCard>
 
-                        <ui:SettingsCard
-                            Click="OnWebsiteRequest"
-                            Header="{DynamicResource Website}"
-                            IsClickEnabled="True">
-                            <ui:SettingsCard.ActionIcon>
-                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Open_24_Regular}" />
-                            </ui:SettingsCard.ActionIcon>
-                        </ui:SettingsCard>
-
-                        <ui:SettingsCard
-                            Click="OnSponsorRequest"
-                            Header="{DynamicResource Sponsor}"
-                            IsClickEnabled="True">
-                            <ui:SettingsCard.ActionIcon>
-                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Open_24_Regular}" />
-                            </ui:SettingsCard.ActionIcon>
-                        </ui:SettingsCard>
-
-                        <ui:SettingsCard
-                            Click="OnJoinGroupRequest"
-                            Header="{DynamicResource Group}"
-                            IsClickEnabled="True">
-                            <ui:SettingsCard.ActionIcon>
-                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Open_24_Regular}" />
-                            </ui:SettingsCard.ActionIcon>
-                        </ui:SettingsCard>
-
-                        <ui:SettingsCard
-                            Click="OnReportRequest"
-                            Header="{DynamicResource Report}"
-                            IsClickEnabled="True">
-                            <ui:SettingsCard.ActionIcon>
-                                <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Open_24_Regular}" />
-                            </ui:SettingsCard.ActionIcon>
+                        <ui:SettingsCard Header="鸣谢">
+                            <ikw:SimpleStackPanel Orientation="Horizontal" Spacing="6">
+                                <ui:HyperlinkButton Content="Flow Launcher" NavigateUri="https://ai.baidu.com/tech/ocr" />
+                                <ui:HyperlinkButton Content="UI.WPF.Modern" NavigateUri="https://ai.baidu.com/tech/ocr" />
+                                <ui:HyperlinkButton Content="Bob" NavigateUri="https://ai.baidu.com/tech/ocr" />
+                            </ikw:SimpleStackPanel>
                         </ui:SettingsCard>
                     </ui:SettingsExpander.Items>
                 </ui:SettingsExpander>
