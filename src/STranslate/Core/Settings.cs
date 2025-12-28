@@ -527,21 +527,20 @@ public partial class Settings : ObservableObject
 
     private void ApplyTheme()
     {
-        ThemeManager.SetRequestedTheme(App.Current.MainWindow, ColorScheme);
-        var window = App.Current.Windows.OfType<SettingsWindow>().FirstOrDefault();
-        if (window != null)
+        // 遍历所有窗口统一应用主题
+        foreach (System.Windows.Window window in App.Current.Windows)
         {
             ThemeManager.SetRequestedTheme(window, ColorScheme);
         }
-        var promptWindow = App.Current.Windows.OfType<PromptEditWindow>().FirstOrDefault();
-        if (promptWindow != null)
+
+        // 为 TaskbarIcon 的 ContextMenu 应用主题
+        if (App.Current.MainWindow is MainWindow mainWindow)
         {
-            ThemeManager.SetRequestedTheme(promptWindow, ColorScheme);
-        }
-        var ocrWindow = App.Current.Windows.OfType<OcrWindow>().FirstOrDefault();
-        if (ocrWindow != null)
-        {
-            ThemeManager.SetRequestedTheme(ocrWindow, ColorScheme);
+            var notifyIcon = mainWindow.FindName("PART_NotifyIcon") as Hardcodet.Wpf.TaskbarNotification.TaskbarIcon;
+            if (notifyIcon?.ContextMenu != null)
+            {
+                ThemeManager.SetRequestedTheme(notifyIcon.ContextMenu, ColorScheme);
+            }
         }
     }
 

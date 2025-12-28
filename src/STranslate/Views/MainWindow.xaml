@@ -275,7 +275,7 @@
                 <s:BindingProxy x:Key="ViewModel" Data="{Binding}" />
             </tb:TaskbarIcon.Resources>
             <tb:TaskbarIcon.ContextMenu>
-                <ContextMenu Style="{DynamicResource DefaultContextMenuStyle}">
+                <ContextMenu>
                     <MenuItem Command="{Binding Source={StaticResource ViewModel}, Path=Data.ToggleAppCommand}">
                         <MenuItem.Header>
                             <Grid>
