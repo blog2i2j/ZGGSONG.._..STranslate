@@ -3,17 +3,33 @@ namespace STranslate.Core;
 public sealed class DebounceExecutor : IDisposable
 {
     private CancellationTokenSource? _cts;
-    private readonly object _lock = new();  // 避免并发调用时的竞态条件
+    private readonly Lock _lock = new();
+    private bool _disposed = false;
+
+    /// <summary>
+    /// 取消当前待执行的防抖任务
+    /// </summary>
+    public void Cancel()
+    {
+        lock (_lock)
+        {
+            _cts?.Cancel();
+            _cts?.Dispose();
+            _cts = null;
+        }
+    }
 
     /// <summary>
     /// 同步动作防抖执行
     /// </summary>
     public void Execute(Action action, TimeSpan delay)
     {
+        ObjectDisposedException.ThrowIf(_disposed, this);
+
         lock (_lock)
         {
             _cts?.Cancel();
-            _cts?.Dispose();  // 释放旧的 CancellationTokenSource
+            _cts?.Dispose();
             _cts = new CancellationTokenSource();
         }
 
@@ -42,6 +58,8 @@ public sealed class DebounceExecutor : IDisposable
     /// </summary>
     public void ExecuteAsync(Func<Task> asyncAction, TimeSpan delay)
     {
+        ObjectDisposedException.ThrowIf(_disposed, this);
+
         lock (_lock)
         {
             _cts?.Cancel();
@@ -71,7 +89,10 @@ public sealed class DebounceExecutor : IDisposable
 
     public void Dispose()
     {
-        _cts?.Cancel();
-        _cts?.Dispose();
+        if (_disposed)
+            return;
+
+        Cancel(); // 复用 Cancel 方法
+        _disposed = true;
     }
 }

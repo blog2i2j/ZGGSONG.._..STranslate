@@ -154,6 +154,9 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
     [RelayCommand(IncludeCancelCommand = true, CanExecute = nameof(CanTranslate))]
     private async Task TranslateAsync(string? force, CancellationToken cancellationToken)
     {
+        // 取消防抖执行器中的待执行任务
+        _debounceExecutor.Cancel();
+
         ResetAllServices();
 
         IdentifiedLanguage = string.Empty;
@@ -1539,8 +1542,14 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
         if (!string.IsNullOrWhiteSpace(IdentifiedLanguage))
             IdentifiedLanguage = string.Empty;
 
-        if (!Settings.AutoTranslate || string.IsNullOrWhiteSpace(value))
+        if (!Settings.AutoTranslate)
             return;
+
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            _debounceExecutor.Cancel();
+            return;
+        }
 
         void Execute()
         {
@@ -1620,6 +1629,8 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
 
     public void Dispose()
     {
+        _debounceExecutor.Dispose();
+
         Utilities.MouseTextSelected -= OnMouseTextSelected;
 
         // 如果窗口一直没打开过，恢复位置后再退出
