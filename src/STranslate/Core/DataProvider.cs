@@ -182,6 +182,8 @@ public class DataProvider
 
     public List<Key> IncrementalTranslateKeys { get; } =
     [
+        Key.None,
+
         Key.F1,
         Key.F2,
         Key.F3,

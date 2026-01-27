@@ -109,7 +109,7 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
     public partial bool IsMouseHook { get; set; } = false;
 
     [ObservableProperty]
-    public partial bool IsIncreamentalTranslate { get; set; } = false;
+    public partial bool IsIncrementalTranslate { get; set; } = false;
 
     [ObservableProperty]
     public partial bool IsIdentifyProcessing { get; set; } = false;
@@ -1020,51 +1020,51 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
 
     #endregion
 
-    #region Increatemental Translate
+    #region Incretemental Translate
+    public bool IsIncremented { get; set; } = false;
 
-    [RelayCommand]
-    private void ToggleIncreamentalTranslate() => Settings.IsEnableIncreamentalTranslate = !Settings.IsEnableIncreamentalTranslate;
-
-    public void OnIsEnableIncreamentalTranslateChanged(bool value)
+    public void OnIncrementalTranslateChanged(bool value)
     {
         if (value)
         {
             GlobalKeyboardHelper.KeyDown += OnGlobalKeyboardKeyDown;
             GlobalKeyboardHelper.KeyUp += OnGlobalKeyboardKeyUp;
             GlobalKeyboardHelper.Start();
+            IsIncremented = true;
         }
         else
         {
             GlobalKeyboardHelper.KeyDown -= OnGlobalKeyboardKeyDown;
             GlobalKeyboardHelper.KeyUp -= OnGlobalKeyboardKeyUp;
             GlobalKeyboardHelper.Stop();
+            IsIncremented = false;
         }
     }
 
     private async void OnGlobalKeyboardKeyDown(Key key)
     {
-        if (key != Settings.IncreamentalTranslateKey)
+        if (key != HotkeySettings.IncrementalTranslateKey)
             return;
 
         // 开启功能后拦截该键（避免影响其他应用）
-        GlobalKeyboardHelper.SuppressKey(Settings.IncreamentalTranslateKey);
+        GlobalKeyboardHelper.SuppressKey(HotkeySettings.IncrementalTranslateKey);
 
-        IsIncreamentalTranslate = true;
+        IsIncrementalTranslate = true;
     }
 
     private void OnGlobalKeyboardKeyUp(Key key)
     {
-        if (key != Settings.IncreamentalTranslateKey)
+        if (key != HotkeySettings.IncrementalTranslateKey)
             return;
 
         // 取消拦截
-        GlobalKeyboardHelper.UnsuppressKey(Settings.IncreamentalTranslateKey);
+        GlobalKeyboardHelper.UnsuppressKey(HotkeySettings.IncrementalTranslateKey);
 
         // 关闭功能
-        IsIncreamentalTranslate = false;
+        IsIncrementalTranslate = false;
     }
 
-    partial void OnIsIncreamentalTranslateChanged(bool enable)
+    partial void OnIsIncrementalTranslateChanged(bool enable)
     {
         if (enable)
         {
@@ -1073,13 +1073,13 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
             UpdateCacheText();
 
             _ = MouseKeyHelper.StartMouseTextSelectionAsync();
-            MouseKeyHelper.MouseTextSelected += OnMouseTextSelectedIncreatemental;
+            MouseKeyHelper.MouseTextSelected += OnMouseTextSelectedIncretemental;
         }
         else
         {
             IsTopmost = false;
             MouseKeyHelper.StopMouseTextSelection();
-            MouseKeyHelper.MouseTextSelected -= OnMouseTextSelectedIncreatemental;
+            MouseKeyHelper.MouseTextSelected -= OnMouseTextSelectedIncretemental;
 
             if (string.IsNullOrWhiteSpace(InputText) || _oldText == InputText)
                 return;
@@ -1099,7 +1099,7 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
         _oldText = InputText;
     }
 
-    private void OnMouseTextSelectedIncreatemental(string text)
+    private void OnMouseTextSelectedIncretemental(string text)
     {
         _ = Application.Current.Dispatcher.InvokeAsync(() =>
         {
@@ -1752,7 +1752,7 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
         _debounceExecutor.Dispose();
 
         MouseKeyHelper.MouseTextSelected -= OnMouseTextSelected;
-        MouseKeyHelper.MouseTextSelected -= OnMouseTextSelectedIncreatemental;
+        MouseKeyHelper.MouseTextSelected -= OnMouseTextSelectedIncretemental;
 
         GlobalKeyboardHelper.KeyDown -= OnGlobalKeyboardKeyDown;
         GlobalKeyboardHelper.KeyUp -= OnGlobalKeyboardKeyUp;

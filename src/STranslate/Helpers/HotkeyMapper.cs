@@ -16,14 +16,25 @@ public class HotkeyMapper
     private const string LWin = "LWin";
     private const string RWin = "RWin";
 
+    private static string _registeredHotkey = "None";
+
     static HotkeyMapper()
     {
         _logger = Ioc.Default.GetRequiredService<ILogger<HotkeyMapper>>();
         _i18n = Ioc.Default.GetRequiredService<Internationalization>();
     }
 
+    internal static void SetExtraHotkey(string key)
+    {
+        _registeredHotkey = key;
+    }
+
     internal static bool SetHotkey(string hotkeyStr, Action action)
     {
+        // 避免重复注册相同热键导致异常
+        if (hotkeyStr.Contains(_registeredHotkey))
+            return false;
+
         var hotkey = new HotkeyModel(hotkeyStr);
         return SetHotkey(hotkey, action);
     }

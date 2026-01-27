@@ -15,6 +15,8 @@ public partial class HotkeySettings : ObservableObject
     private AppStorage<HotkeySettings> Storage { get; set; } = null!;
     private MainWindowViewModel MainWindowViewModel { get; set; } = null!;
 
+    [ObservableProperty] public partial Key IncrementalTranslateKey { get; set; } = Key.F7;
+
     #region Setting Items
 
     public GlobalHotkey OpenWindowHotkey { get; set; } = new("Alt + G");
@@ -63,6 +65,7 @@ public partial class HotkeySettings : ObservableObject
     public List<RegisteredHotkeyData> RegisteredHotkeys =>
     [
         ..FixedHotkeys(),
+
         CreateGlobalHotkeyData(OpenWindowHotkey.Key, "Hotkey_OpenSTranslate", () => OpenWindowHotkey.Key = Constant.EmptyHotkey),
         CreateGlobalHotkeyData(InputTranslateHotkey.Key, "Hotkey_InputTranslate", () => InputTranslateHotkey.Key = Constant.EmptyHotkey),
         CreateGlobalHotkeyData(CrosswordTranslateHotkey.Key, "Hotkey_CrosswordTranslate", () => CrosswordTranslateHotkey.Key = Constant.EmptyHotkey),
@@ -131,6 +134,11 @@ public partial class HotkeySettings : ObservableObject
     public void SetStorage(AppStorage<HotkeySettings> storage)
     {
         Storage = storage;
+        PropertyChanged += (s, e) =>
+        {
+            if (e.PropertyName == nameof(IncrementalTranslateKey))
+                ApplyIncrementalTranslate();
+        };
 
         // 自动监听所有 GlobalHotkey 类型的属性
         foreach (var prop in GetType().GetProperties())
@@ -187,7 +195,7 @@ public partial class HotkeySettings : ObservableObject
         {
             if (prop.GetValue(this) is not Hotkey hotkey)
                 continue;
-            if (!defaultHotkeys.TryGetValue(prop.Name, out var defaultKey))
+            if (!defaultHotkeys.TryGetValue(prop.Name, out string? defaultKey))
                 continue;
 
             hotkey.SetDefault(defaultKey);
@@ -201,7 +209,24 @@ public partial class HotkeySettings : ObservableObject
         if (!Ioc.Default.GetRequiredService<Settings>().DisableGlobalHotkeys)
             RegisterHotkeys();
 
+        ApplyIncrementalTranslate();
+
         UpdateTrayIconWithPriority();
+    }
+
+    private void ApplyIncrementalTranslate()
+    {
+        HotkeyMapper.SetExtraHotkey(IncrementalTranslateKey.ToString());
+        var vm = Ioc.Default.GetRequiredService<MainWindowViewModel>();
+
+        if (vm.IsIncremented && IncrementalTranslateKey == Key.None)
+        {
+            vm.OnIncrementalTranslateChanged(false);
+        }
+        else if (!vm.IsIncremented && IncrementalTranslateKey != Key.None)
+        {
+            vm.OnIncrementalTranslateChanged(true);
+        }
     }
 
     public void ApplyGlobalHotkeys()
@@ -271,6 +296,7 @@ public partial class HotkeySettings : ObservableObject
         HandleGlobalLogic(nameof(SilentOcrHotkey));
         HandleGlobalLogic(nameof(SilentTtsHotkey));
         HandleGlobalLogic(nameof(OcrHotkey));
+
     }
 
     private void UnregisterHotkeys()
