@@ -137,7 +137,10 @@ public partial class HotkeySettings : ObservableObject
         PropertyChanged += (s, e) =>
         {
             if (e.PropertyName == nameof(IncrementalTranslateKey))
+            {
                 ApplyIncrementalTranslate();
+                Save();
+            }
         };
 
         // 自动监听所有 GlobalHotkey 类型的属性
