@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using iNKORE.UI.WPF.Modern.Controls;
 using Microsoft.Win32;
 using ObservableCollections;
 using STranslate.Core;
@@ -244,6 +245,40 @@ public partial class HistoryViewModel : ObservableObject, IDisposable
         {
             _snackbar.ShowError($"{_i18n.GetTranslation("ExportFailed")}: {ex.Message}");
         }
+    }
+
+    [RelayCommand]
+    private async Task DeleteSelectedHistoryAsync()
+    {
+        var selected = _items.Where(i => i.IsExportSelected).ToList();
+        if (selected.Count == 0)
+        {
+            _snackbar.Show(
+                _i18n.GetTranslation("NoHistorySelected"),
+                Severity.Warning,
+                actionText: _i18n.GetTranslation("SelectAll"),
+                actionCallback: ToggleSelectAll);
+            return;
+        }
+
+        if (await new ContentDialog
+        {
+            Title = _i18n.GetTranslation("Prompt"),
+            CloseButtonText = _i18n.GetTranslation("Cancel"),
+            PrimaryButtonText = _i18n.GetTranslation("Confirm"),
+            DefaultButton = ContentDialogButton.Primary,
+            Content = string.Format(_i18n.GetTranslation("BatchDeleteHistoryConfirm"), selected.Count),
+        }.ShowAsync() != ContentDialogResult.Primary)
+        {
+            return;
+        }
+
+        var totalCountBefore = TotalCount;
+        foreach (var item in selected)
+            await DeleteAsync(item.Model);
+
+        if (TotalCount == totalCountBefore - selected.Count)
+            _snackbar.ShowSuccess(_i18n.GetTranslation("OperationSuccess"));
     }
 
     private void AddItems(IEnumerable<HistoryModel> models)

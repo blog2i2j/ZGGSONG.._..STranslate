@@ -42,6 +42,12 @@
                 ToolTip="{DynamicResource HistorySelectAllOrClear}" />
             <control:IconButton
                 Margin="10,0,0,0"
+                Command="{Binding DeleteSelectedHistoryCommand}"
+                Icon="{x:Static ui:FluentSystemIcons.Delete_20_Regular}"
+                IsEnabled="{Binding CanExportHistory}"
+                ToolTip="{DynamicResource BatchDeleteHistory}" />
+            <control:IconButton
+                Margin="10,0,0,0"
                 Command="{Binding ExportHistoryCommand}"
                 Icon="{x:Static ui:FluentSystemIcons.ArrowExport_20_Regular}"
                 IsEnabled="{Binding CanExportHistory}"
