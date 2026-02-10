@@ -191,8 +191,6 @@ public partial class App : ISingleInstanceApp, INavigation, IDisposable
         _notification = Ioc.Default.GetRequiredService<INotification>() as Notification;
         _notification?.Install();
 
-        AutoLoggerAttribute.InitializeLogger(_logger);
-
         _pluginManager = Ioc.Default.GetRequiredService<PluginManager>();
         _pluginManager.LoadPlugins();
         Ioc.Default.GetRequiredService<ServiceManager>().LoadServices();
