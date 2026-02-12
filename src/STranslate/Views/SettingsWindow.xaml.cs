@@ -50,6 +50,7 @@ public partial class SettingsWindow
             nameof(StandalonePage) => Ioc.Default.GetRequiredService<StandalonePage>(),
             nameof(HistoryPage) => Ioc.Default.GetRequiredService<HistoryPage>(),
             nameof(PluginPage) => Ioc.Default.GetRequiredService<PluginPage>(),
+            nameof(PluginMarketPage) => Ioc.Default.GetRequiredService<PluginMarketPage>(),
             nameof(HotkeyPage) => Ioc.Default.GetRequiredService<HotkeyPage>(),
             nameof(NetworkPage) => Ioc.Default.GetRequiredService<NetworkPage>(),
             nameof(AboutPage) => Ioc.Default.GetRequiredService < AboutPage>(),

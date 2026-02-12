@@ -1,0 +1,138 @@
+using CommunityToolkit.Mvvm.DependencyInjection;
+using STranslate.Core;
+using STranslate.Models;
+using System.Globalization;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Markup;
+
+namespace STranslate.Converters;
+
+/// <summary>
+/// 插件操作状态到文本转换器
+/// </summary>
+public class PluginActionStatusToStringConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is PluginActionStatus status)
+        {
+            var i18n = Ioc.Default.GetRequiredService<Internationalization>();
+            return status switch
+            {
+                PluginActionStatus.Download => i18n.GetTranslation("PluginMarketDownload"),
+                PluginActionStatus.Installed => i18n.GetTranslation("PluginMarketInstalled"),
+                PluginActionStatus.Upgrade => i18n.GetTranslation("PluginMarketUpgrade"),
+                PluginActionStatus.Downloading => $"{i18n.GetTranslation("PluginMarketDownloading")}...",
+                _ => string.Empty
+            };
+        }
+        return string.Empty;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => Binding.DoNothing;
+
+    public override object ProvideValue(IServiceProvider serviceProvider) => this;
+}
+
+/// <summary>
+/// 插件操作状态到启用状态转换器
+/// </summary>
+public class PluginActionStatusToBoolConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is PluginActionStatus status)
+        {
+            return status is PluginActionStatus.Download or PluginActionStatus.Upgrade;
+        }
+        return false;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => Binding.DoNothing;
+
+    public override object ProvideValue(IServiceProvider serviceProvider) => this;
+}
+
+/// <summary>
+/// 插件分类到显示文本转换器
+/// </summary>
+public class PluginCategoryToStringConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is string category)
+        {
+            var i18n = Ioc.Default.GetRequiredService<Internationalization>();
+            return category switch
+            {
+                "All" => i18n.GetTranslation("PluginTypeAll"),
+                "Translate" => i18n.GetTranslation("PluginTypeTranslate"),
+                "Ocr" => i18n.GetTranslation("PluginTypeOcr"),
+                "Tts" => i18n.GetTranslation("PluginTypeTts"),
+                "Vocabulary" => i18n.GetTranslation("PluginTypeVocabulary"),
+                _ => category
+            };
+        }
+        return value?.ToString() ?? string.Empty;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => Binding.DoNothing;
+
+    public override object ProvideValue(IServiceProvider serviceProvider) => this;
+}
+
+/// <summary>
+/// 布尔值到强调按钮样式转换器
+/// </summary>
+public class BoolToAccentButtonStyleConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is bool boolValue && boolValue)
+        {
+            return Application.Current.FindResource(iNKORE.UI.WPF.Modern.ThemeKeys.AccentButtonStyleKey);
+        }
+        return Application.Current.FindResource(typeof(System.Windows.Controls.Button));
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => Binding.DoNothing;
+
+    public override object ProvideValue(IServiceProvider serviceProvider) => this;
+}
+
+/// <summary>
+/// 字符串空值到可见性转换器
+/// </summary>
+public class StringNullOrEmptyToVisibilityConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return string.IsNullOrEmpty(value as string) ? Visibility.Collapsed : Visibility.Visible;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => Binding.DoNothing;
+
+    public override object ProvideValue(IServiceProvider serviceProvider) => this;
+}
+
+/// <summary>
+/// 布尔值取反到可见性转换器
+/// </summary>
+public class BoolInverseToVisibilityConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return value is bool boolValue && boolValue ? Visibility.Collapsed : Visibility.Visible;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => Binding.DoNothing;
+
+    public override object ProvideValue(IServiceProvider serviceProvider) => this;
+}

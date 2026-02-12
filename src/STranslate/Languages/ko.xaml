@@ -184,6 +184,24 @@
     <sys:String x:Key="SearchPluginToolTip">Ctrl+F를 눌러 플러그인 검색</sys:String>
     <sys:String x:Key="DropInstallPlugin">놓아서 플러그인 설치</sys:String>
 
+    <!--  // Plugin Market //  -->
+    <sys:String x:Key="PluginMarket">플러그인 마켓</sys:String>
+    <sys:String x:Key="PluginMarketRefresh">새로고침</sys:String>
+    <sys:String x:Key="PluginMarketSearch">플러그인 검색...</sys:String>
+    <sys:String x:Key="PluginMarketDownload">다운로드</sys:String>
+    <sys:String x:Key="PluginMarketUpgrade">업그레이드</sys:String>
+    <sys:String x:Key="PluginMarketInstalled">설치됨</sys:String>
+    <sys:String x:Key="PluginMarketDownloading">다운로드 중</sys:String>
+    <sys:String x:Key="PluginMarketMultiSelect">다중 선택</sys:String>
+    <sys:String x:Key="PluginMarketDownloadSelected">선택 항목 다운로드</sys:String>
+    <sys:String x:Key="PluginMarketSelectAll">모두 선택</sys:String>
+    <sys:String x:Key="PluginMarketDeselectAll">선택 해제</sys:String>
+    <sys:String x:Key="PluginMarketLoading">로드 중...</sys:String>
+    <sys:String x:Key="PluginMarketLoadError">로드 실패</sys:String>
+    <sys:String x:Key="PluginMarketNoPlugins">플러그인 없음</sys:String>
+    <sys:String x:Key="PluginMarketCurrentVersion">현재 버전</sys:String>
+    <sys:String x:Key="PluginMarketLatestVersion">최신 버전</sys:String>
+
     <sys:String x:Key="Network_EnableExternalCall">외부 호출 활성화</sys:String>
     <sys:String x:Key="Network_EnableExternalCallDescription">외부 호출 기능 활성화 또는 비활성화</sys:String>
     <sys:String x:Key="Network_ExternalCallPort">외부 호출 포트</sys:String>

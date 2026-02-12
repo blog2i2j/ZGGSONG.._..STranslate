@@ -184,6 +184,24 @@
     <sys:String x:Key="SearchPluginToolTip">Ctrl+F でプラグインを検索</sys:String>
     <sys:String x:Key="DropInstallPlugin">ドロップしてプラグインをインストール</sys:String>
 
+    <!--  // Plugin Market //  -->
+    <sys:String x:Key="PluginMarket">プラグインマーケット</sys:String>
+    <sys:String x:Key="PluginMarketRefresh">更新</sys:String>
+    <sys:String x:Key="PluginMarketSearch">プラグインを検索...</sys:String>
+    <sys:String x:Key="PluginMarketDownload">ダウンロード</sys:String>
+    <sys:String x:Key="PluginMarketUpgrade">アップグレード</sys:String>
+    <sys:String x:Key="PluginMarketInstalled">インストール済み</sys:String>
+    <sys:String x:Key="PluginMarketDownloading">ダウンロード中</sys:String>
+    <sys:String x:Key="PluginMarketMultiSelect">複数選択</sys:String>
+    <sys:String x:Key="PluginMarketDownloadSelected">選択項目をダウンロード</sys:String>
+    <sys:String x:Key="PluginMarketSelectAll">すべて選択</sys:String>
+    <sys:String x:Key="PluginMarketDeselectAll">選択を解除</sys:String>
+    <sys:String x:Key="PluginMarketLoading">読み込み中...</sys:String>
+    <sys:String x:Key="PluginMarketLoadError">読み込みに失敗しました</sys:String>
+    <sys:String x:Key="PluginMarketNoPlugins">プラグインがありません</sys:String>
+    <sys:String x:Key="PluginMarketCurrentVersion">現在のバージョン</sys:String>
+    <sys:String x:Key="PluginMarketLatestVersion">最新バージョン</sys:String>
+
     <sys:String x:Key="Network_EnableExternalCall">外部呼び出しを有効化</sys:String>
     <sys:String x:Key="Network_EnableExternalCallDescription">外部呼び出し機能の有効/無効化</sys:String>
     <sys:String x:Key="Network_ExternalCallPort">外部呼び出しポート</sys:String>

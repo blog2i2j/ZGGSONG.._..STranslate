@@ -190,6 +190,24 @@
     <sys:String x:Key="SearchPluginToolTip">按 Ctrl+F 搜尋外掛</sys:String>
     <sys:String x:Key="DropInstallPlugin">放開安裝插件</sys:String>
 
+    <!--  // Plugin Market //  -->
+    <sys:String x:Key="PluginMarket">商店</sys:String>
+    <sys:String x:Key="PluginMarketRefresh">重新整理</sys:String>
+    <sys:String x:Key="PluginMarketSearch">搜尋插件...</sys:String>
+    <sys:String x:Key="PluginMarketDownload">下載</sys:String>
+    <sys:String x:Key="PluginMarketUpgrade">升級</sys:String>
+    <sys:String x:Key="PluginMarketInstalled">已安裝</sys:String>
+    <sys:String x:Key="PluginMarketDownloading">下載中</sys:String>
+    <sys:String x:Key="PluginMarketMultiSelect">多選</sys:String>
+    <sys:String x:Key="PluginMarketDownloadSelected">下載選取項目</sys:String>
+    <sys:String x:Key="PluginMarketSelectAll">全選</sys:String>
+    <sys:String x:Key="PluginMarketDeselectAll">取消全選</sys:String>
+    <sys:String x:Key="PluginMarketLoading">載入中...</sys:String>
+    <sys:String x:Key="PluginMarketLoadError">載入失敗</sys:String>
+    <sys:String x:Key="PluginMarketNoPlugins">暫無插件</sys:String>
+    <sys:String x:Key="PluginMarketCurrentVersion">目前版本</sys:String>
+    <sys:String x:Key="PluginMarketLatestVersion">最新版本</sys:String>
+
     <!--  // Network Page //  -->
     <sys:String x:Key="Network_EnableExternalCall">啟用外部呼叫</sys:String>
     <sys:String x:Key="Network_EnableExternalCallDescription">啟用或停用外部呼叫</sys:String>
