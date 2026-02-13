@@ -130,47 +130,84 @@
 
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="vm:PluginMarketInfo">
-                            <Grid Width="320">
-                                <!--  插件卡片  -->
-                                <ui:SettingsCard
-                                    Margin="0,3"
-                                    Description="{Binding Description}"
-                                    Header="{Binding Name}">
-                                    <ui:SettingsCard.HeaderIcon>
-                                        <Image
-                                            Width="32"
-                                            Height="32"
-                                            Source="{Binding IconUrl}" />
-                                    </ui:SettingsCard.HeaderIcon>
+                            <Border
+                                Width="320"
+                                Margin="0,3"
+                                Padding="12,10"
+                                Background="{DynamicResource {x:Static ui:ThemeKeys.CardBackgroundFillColorDefaultBrushKey}}"
+                                BorderBrush="{DynamicResource {x:Static ui:ThemeKeys.CardStrokeColorDefaultBrushKey}}"
+                                BorderThickness="1"
+                                CornerRadius="8">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="12" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
 
-                                    <StackPanel>
-                                        <StackPanel.Resources>
-                                            <Style BasedOn="{StaticResource {x:Static ui:ThemeKeys.CaptionTextBlockStyleKey}}" TargetType="TextBlock">
-                                                <Setter Property="VerticalAlignment" Value="Center" />
-                                            </Style>
-                                        </StackPanel.Resources>
+                                    <!--  左侧图标（占据纵向空间，垂直居中）  -->
+                                    <Image
+                                        Grid.Column="0"
+                                        Width="64"
+                                        Height="64"
+                                        VerticalAlignment="Center"
+                                        Source="{Binding IconUrl}"
+                                        Stretch="Uniform" />
 
+                                    <!--  右侧内容  -->
+                                    <Grid Grid.Column="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <!--  标题  -->
+                                        <TextBlock
+                                            Grid.Row="0"
+                                            FontSize="14"
+                                            FontWeight="SemiBold"
+                                            Text="{Binding Name}"
+                                            TextTrimming="CharacterEllipsis" />
+
+                                        <!--  描述  -->
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            Margin="0,2,0,0"
+                                            Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}"
+                                            Text="{Binding Description}"
+                                            TextTrimming="CharacterEllipsis" />
+
+                                        <!--  作者和版本号（左对齐）  -->
+                                        <TextBlock
+                                            Grid.Row="3"
+                                            Margin="0,4,0,0"
+                                            VerticalAlignment="Bottom"
+                                            FontSize="11"
+                                            Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}">
+                                            <TextBlock.Text>
+                                                <MultiBinding StringFormat="{}{0} | {1}">
+                                                    <Binding Path="Author" />
+                                                    <Binding Path="Version" />
+                                                </MultiBinding>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+
+                                        <!--  操作按钮（右下角）  -->
                                         <ikw:SimpleStackPanel
+                                            Grid.Row="3"
                                             HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
                                             Orientation="Horizontal"
-                                            Spacing="10">
-                                            <!--  作者和版本信息  -->
-                                            <TextBlock Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}">
-                                                <TextBlock.Text>
-                                                    <MultiBinding StringFormat="{}{0} | {1}">
-                                                        <Binding Path="Author" />
-                                                        <Binding Path="Version" />
-                                                    </MultiBinding>
-                                                </TextBlock.Text>
-                                            </TextBlock>
-
-                                            <!--  操作按钮（下载/升级/已安装）  -->
+                                            Spacing="8">
                                             <Button
-                                                MinWidth="70"
-                                                Padding="10,5"
+                                                MinWidth="60"
+                                                Padding="8,4"
                                                 Command="{Binding Data.DownloadPluginCommand, Source={StaticResource ViewModelProxy}}"
                                                 CommandParameter="{Binding}"
                                                 Content="{Binding ActionStatus, Converter={cnvt:PluginActionStatusToStringConverter}}"
+                                                FontSize="12"
                                                 IsEnabled="{Binding ActionStatus, Converter={cnvt:PluginActionStatusToBoolConverter}}"
                                                 Visibility="{Binding IsDownloading, Converter={cnvt:BoolToVisibilityInverseConverter}}">
                                                 <Button.Style>
@@ -181,13 +218,7 @@
                                                                 <Setter Property="IsEnabled" Value="False" />
                                                                 <Setter Property="Foreground" Value="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorDisabledBrushKey}}" />
                                                             </DataTrigger>
-
-                                                            <!--  修改此处：通过设置特定的类样式或属性来实现 Accent 效果  -->
                                                             <DataTrigger Binding="{Binding ActionStatus}" Value="Upgrade">
-                                                                <!--
-                                                                    注意：通常 ModernWPF/Fluent 样式库会提供附加属性来切换外观，
-                                                                    如果可以直接设置背景/前景则直接设置。
-                                                                -->
                                                                 <Setter Property="Background" Value="{DynamicResource {x:Static ui:ThemeKeys.SystemControlBackgroundAccentBrushKey}}" />
                                                                 <Setter Property="Foreground" Value="{DynamicResource {x:Static ui:ThemeKeys.TextOnAccentFillColorPrimaryBrushKey}}" />
                                                             </DataTrigger>
@@ -196,33 +227,36 @@
                                                 </Button.Style>
                                             </Button>
 
-                                            <!--  取消按钮（下载中显示）  -->
                                             <Button
-                                                MinWidth="70"
-                                                Padding="10,5"
+                                                MinWidth="60"
+                                                Padding="8,4"
                                                 Command="{Binding Data.CancelDownloadCommand, Source={StaticResource ViewModelProxy}}"
                                                 CommandParameter="{Binding}"
                                                 Content="{DynamicResource Cancel}"
+                                                FontSize="12"
                                                 Visibility="{Binding IsDownloading, Converter={cnvt:BoolToVisibilityConverter}}" />
                                         </ikw:SimpleStackPanel>
 
-                                        <!--  下载进度条  -->
-                                        <ProgressBar
-                                            Height="3"
-                                            Margin="0,5,0,0"
-                                            Maximum="100"
-                                            Visibility="{Binding IsDownloading, Converter={cnvt:BoolToVisibilityConverter}}"
-                                            Value="{Binding DownloadProgress}" />
-                                        <TextBlock
-                                            Margin="0,2,0,0"
-                                            HorizontalAlignment="Right"
-                                            FontSize="11"
-                                            Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}"
-                                            Text="{Binding DownloadStatus}"
-                                            Visibility="{Binding IsDownloading, Converter={cnvt:BoolToVisibilityConverter}}" />
-                                    </StackPanel>
-                                </ui:SettingsCard>
-                            </Grid>
+                                        <!--  下载进度条（在按钮下方或上方）  -->
+                                        <StackPanel
+                                            Grid.Row="2"
+                                            Grid.RowSpan="2"
+                                            VerticalAlignment="Bottom"
+                                            Visibility="{Binding IsDownloading, Converter={cnvt:BoolToVisibilityConverter}}">
+                                            <ProgressBar
+                                                Height="3"
+                                                Maximum="100"
+                                                Value="{Binding DownloadProgress}" />
+                                            <TextBlock
+                                                Margin="0,2,0,0"
+                                                HorizontalAlignment="Right"
+                                                FontSize="10"
+                                                Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}"
+                                                Text="{Binding DownloadStatus}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
