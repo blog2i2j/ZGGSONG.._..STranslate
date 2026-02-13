@@ -121,10 +121,10 @@ public partial class PluginMarketViewModel : ObservableObject
             }
 
             // 2. 并行获取每个插件的详细信息
-            //var tasks = pluginIds.Select(GetPluginInfoAsync);
-            //var plugins = await Task.WhenAll(tasks);
-            var firstId = pluginIds.First();
-            var plugins = await Task.WhenAll(GetPluginInfoAsync(firstId));
+            var tasks = pluginIds.Select(GetPluginInfoAsync);
+            var plugins = await Task.WhenAll(tasks);
+            //var firstId = pluginIds.First();
+            //var plugins = await Task.WhenAll(GetPluginInfoAsync(firstId));
 
             // 3. 添加到集合
             foreach (var plugin in plugins.Where(p => p != null))
