@@ -2,6 +2,7 @@
     x:Class="STranslate.Views.Pages.PluginMarketPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
     xmlns:cnvt="clr-namespace:STranslate.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:ikw="http://schemas.inkore.net/lib/ui/wpf"
@@ -184,14 +185,10 @@
                                     Description="{Binding Description}"
                                     Header="{Binding Name}">
                                     <ui:SettingsCard.HeaderIcon>
-                                        <Image
+                                        <cachedImage:Image
                                             Width="32"
                                             Height="32"
-                                            Source="{Binding IconUrl}">
-                                            <!--<Image.Source>
-                                                <BitmapImage UriSource="{Binding IconUrl}" />
-                                            </Image.Source>-->
-                                        </Image>
+                                            ImageUrl="{Binding IconUrl}" />
                                     </ui:SettingsCard.HeaderIcon>
 
                                     <StackPanel>
