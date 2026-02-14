@@ -182,14 +182,16 @@
                                             Margin="8,0,0,0"
                                             VerticalAlignment="Center"
                                             Orientation="Horizontal"
-                                            Spacing="6">
+                                            Spacing="8">
                                             <ikw:SimpleStackPanel.Resources>
                                                 <Style x:Key="ActionIconStyle" TargetType="TextBlock">
                                                     <Setter Property="Foreground" Value="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}" />
                                                     <Setter Property="VerticalAlignment" Value="Center" />
                                                     <Setter Property="Cursor" Value="Hand" />
                                                     <Setter Property="FontFamily" Value="{DynamicResource FluentSystemIcons}" />
-                                                    <Setter Property="FontSize" Value="{DynamicResource STControlFontSize12}" />
+                                                    <Setter Property="FontSize" Value="{DynamicResource STControlFontSize16}" />
+                                                    <Setter Property="Padding" Value="4" />
+                                                    <Setter Property="Background" Value="Transparent" />
                                                     <Style.Triggers>
                                                         <Trigger Property="IsMouseOver" Value="True">
                                                             <Setter Property="Foreground" Value="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorPrimaryBrushKey}}" />
@@ -254,7 +256,7 @@
                                         Foreground="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorTertiaryBrushKey}}"
                                         TextTrimming="CharacterEllipsis">
                                         <TextBlock.Text>
-                                            <MultiBinding StringFormat="{}{0} · {1}">
+                                            <MultiBinding StringFormat="{}{0} · v{1}">
                                                 <Binding Path="Author" />
                                                 <Binding Path="Version" />
                                             </MultiBinding>
