@@ -72,3 +72,23 @@ public class BoolInverseToVisibilityConverter : MarkupExtension, IValueConverter
 
     public override object ProvideValue(IServiceProvider serviceProvider) => this;
 }
+
+/// <summary>
+/// 插件操作状态到可见性转换器
+/// </summary>
+public class PluginActionStatusToVisibilityConverter : MarkupExtension, IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is PluginActionStatus status && parameter is string targetStatus)
+        {
+            return status.ToString() == targetStatus ? Visibility.Visible : Visibility.Collapsed;
+        }
+        return Visibility.Collapsed;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        => Binding.DoNothing;
+
+    public override object ProvideValue(IServiceProvider serviceProvider) => this;
+}

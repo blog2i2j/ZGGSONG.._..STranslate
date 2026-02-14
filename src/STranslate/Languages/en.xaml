@@ -208,6 +208,10 @@
     <sys:String x:Key="PluginMarketCurrentVersion">Current Version</sys:String>
     <sys:String x:Key="PluginMarketLatestVersion">Latest Version</sys:String>
     <sys:String x:Key="PluginDownloadCancelled">Download cancelled</sys:String>
+    <sys:String x:Key="PluginActionDownload">Download Plugin</sys:String>
+    <sys:String x:Key="PluginActionUpgrade">Upgrade Plugin</sys:String>
+    <sys:String x:Key="PluginActionInstalled">Installed</sys:String>
+    <sys:String x:Key="PluginActionPendingRestart">Pending Restart</sys:String>
 
     <!--  // Network Page //  -->
     <sys:String x:Key="Network_EnableExternalCall">Enable external call</sys:String>

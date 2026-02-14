@@ -208,6 +208,10 @@
     <sys:String x:Key="PluginMarketCurrentVersion">目前版本</sys:String>
     <sys:String x:Key="PluginMarketLatestVersion">最新版本</sys:String>
     <sys:String x:Key="PluginDownloadCancelled">下載已取消</sys:String>
+    <sys:String x:Key="PluginActionDownload">下載插件</sys:String>
+    <sys:String x:Key="PluginActionUpgrade">升級插件</sys:String>
+    <sys:String x:Key="PluginActionInstalled">已安裝</sys:String>
+    <sys:String x:Key="PluginActionPendingRestart">待重啟</sys:String>
 
     <!--  // Network Page //  -->
     <sys:String x:Key="Network_EnableExternalCall">啟用外部呼叫</sys:String>

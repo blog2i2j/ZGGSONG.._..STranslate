@@ -174,156 +174,116 @@
                                                 Text="{Binding Name}"
                                                 TextTrimming="CharacterEllipsis" />
 
-                                            <!--  操作按钮  -->
-                                            <Grid Grid.Column="1" Margin="8,0,0,0">
-                                                <Button
-                                                    MinWidth="50"
-                                                    Padding="8,3"
-                                                    Command="{Binding Data.DownloadPluginCommand, Source={StaticResource ViewModelProxy}}"
-                                                    CommandParameter="{Binding}"
-                                                    Content="{Binding ActionStatus, Converter={cnvt:PluginActionStatusToStringConverter}}"
-                                                    FontSize="{DynamicResource STControlFontSize11}"
-                                                    IsEnabled="{Binding ActionStatus, Converter={cnvt:PluginActionStatusToBoolConverter}}"
-                                                    Visibility="{Binding IsDownloading, Converter={cnvt:BoolToVisibilityInverseConverter}}">
-                                                    <Button.Style>
-                                                        <Style TargetType="Button">
-                                                            <!--  默认样式  -->
-                                                            <Setter Property="Background" Value="{DynamicResource {x:Static ui:ThemeKeys.ControlFillColorDefaultBrushKey}}" />
-                                                            <Setter Property="Foreground" Value="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorPrimaryBrushKey}}" />
-                                                            <Setter Property="BorderBrush" Value="{DynamicResource {x:Static ui:ThemeKeys.ControlStrokeColorDefaultBrushKey}}" />
-                                                            <Setter Property="BorderThickness" Value="1" />
-                                                            <Setter Property="Padding" Value="8,5" />
-                                                            <Setter Property="Template">
-                                                                <Setter.Value>
-                                                                    <ControlTemplate TargetType="Button">
-                                                                        <Border
-                                                                            x:Name="Border"
-                                                                            Background="{TemplateBinding Background}"
-                                                                            BorderBrush="{TemplateBinding BorderBrush}"
-                                                                            BorderThickness="{TemplateBinding BorderThickness}"
-                                                                            CornerRadius="4">
-                                                                            <ContentPresenter
-                                                                                Margin="{TemplateBinding Padding}"
-                                                                                HorizontalAlignment="Center"
-                                                                                VerticalAlignment="Center" />
-                                                                        </Border>
-                                                                        <ControlTemplate.Triggers>
-                                                                            <Trigger Property="IsMouseOver" Value="True">
-                                                                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static ui:ThemeKeys.ControlFillColorSecondaryBrushKey}}" />
-                                                                            </Trigger>
-                                                                            <Trigger Property="IsPressed" Value="True">
-                                                                                <Setter TargetName="Border" Property="Background" Value="{DynamicResource {x:Static ui:ThemeKeys.ControlFillColorTertiaryBrushKey}}" />
-                                                                            </Trigger>
-                                                                        </ControlTemplate.Triggers>
-                                                                    </ControlTemplate>
-                                                                </Setter.Value>
-                                                            </Setter>
-
-                                                            <Style.Triggers>
-                                                                <!--  已安装状态  -->
-                                                                <DataTrigger Binding="{Binding ActionStatus}" Value="Installed">
-                                                                    <Setter Property="IsEnabled" Value="False" />
-                                                                    <Setter Property="Opacity" Value="0.6" />
-                                                                </DataTrigger>
-
-                                                                <!--  下载状态 - Primary 样式  -->
-                                                                <DataTrigger Binding="{Binding ActionStatus}" Value="Download">
-                                                                    <Setter Property="Template">
-                                                                        <Setter.Value>
-                                                                            <ControlTemplate TargetType="Button">
-                                                                                <Border
-                                                                                    x:Name="Border"
-                                                                                    Background="#0078D4"
-                                                                                    BorderBrush="#0078D4"
-                                                                                    BorderThickness="1"
-                                                                                    CornerRadius="4">
-                                                                                    <ContentPresenter
-                                                                                        Margin="{TemplateBinding Padding}"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center" />
-                                                                                </Border>
-                                                                                <ControlTemplate.Triggers>
-                                                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                                                        <Setter TargetName="Border" Property="Background" Value="#106EBE" />
-                                                                                    </Trigger>
-                                                                                    <Trigger Property="IsPressed" Value="True">
-                                                                                        <Setter TargetName="Border" Property="Background" Value="#005A9E" />
-                                                                                    </Trigger>
-                                                                                </ControlTemplate.Triggers>
-                                                                            </ControlTemplate>
-                                                                        </Setter.Value>
-                                                                    </Setter>
-                                                                    <Setter Property="Foreground" Value="White" />
-                                                                </DataTrigger>
-
-                                                                <!--  升级状态 - 红色警示样式  -->
-                                                                <DataTrigger Binding="{Binding ActionStatus}" Value="Upgrade">
-                                                                    <Setter Property="Template">
-                                                                        <Setter.Value>
-                                                                            <ControlTemplate TargetType="Button">
-                                                                                <Border
-                                                                                    x:Name="Border"
-                                                                                    Background="#E74856"
-                                                                                    BorderBrush="#E74856"
-                                                                                    BorderThickness="1"
-                                                                                    CornerRadius="4">
-                                                                                    <ContentPresenter
-                                                                                        Margin="{TemplateBinding Padding}"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center" />
-                                                                                </Border>
-                                                                                <ControlTemplate.Triggers>
-                                                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                                                        <Setter TargetName="Border" Property="Background" Value="#F1707A" />
-                                                                                    </Trigger>
-                                                                                    <Trigger Property="IsPressed" Value="True">
-                                                                                        <Setter TargetName="Border" Property="Background" Value="#C42B1C" />
-                                                                                    </Trigger>
-                                                                                </ControlTemplate.Triggers>
-                                                                            </ControlTemplate>
-                                                                        </Setter.Value>
-                                                                    </Setter>
-                                                                    <Setter Property="Foreground" Value="White" />
-                                                                </DataTrigger>
-
-                                                                <!--  待重启状态 - 橙色警示样式  -->
-                                                                <DataTrigger Binding="{Binding ActionStatus}" Value="PendingRestart">
-                                                                    <Setter Property="IsEnabled" Value="False" />
-                                                                    <Setter Property="Opacity" Value="0.8" />
-                                                                    <Setter Property="Template">
-                                                                        <Setter.Value>
-                                                                            <ControlTemplate TargetType="Button">
-                                                                                <Border
-                                                                                    x:Name="Border"
-                                                                                    Background="#FF8C00"
-                                                                                    BorderBrush="#FF8C00"
-                                                                                    BorderThickness="1"
-                                                                                    CornerRadius="4">
-                                                                                    <ContentPresenter
-                                                                                        Margin="{TemplateBinding Padding}"
-                                                                                        HorizontalAlignment="Center"
-                                                                                        VerticalAlignment="Center" />
-                                                                                </Border>
-                                                                            </ControlTemplate>
-                                                                        </Setter.Value>
-                                                                    </Setter>
-                                                                    <Setter Property="Foreground" Value="White" />
-                                                                </DataTrigger>
-                                                            </Style.Triggers>
-                                                        </Style>
-                                                    </Button.Style>
-                                                </Button>
-
-                                                <!--  取消按钮  -->
-                                                <Button
-                                                    MinWidth="50"
-                                                    Padding="8,3"
-                                                    Command="{Binding Data.CancelDownloadCommand, Source={StaticResource ViewModelProxy}}"
-                                                    CommandParameter="{Binding}"
-                                                    Content="{DynamicResource Cancel}"
-                                                    FontSize="{DynamicResource STControlFontSize11}"
-                                                    Visibility="{Binding IsDownloading, Converter={cnvt:BoolToVisibilityConverter}}" />
-                                            </Grid>
+                                            <!--  操作按钮组  -->
+                                            <ikw:SimpleStackPanel
+                                                Grid.Column="1"
+                                                Margin="8,0,0,0"
+                                                VerticalAlignment="Center"
+                                                Orientation="Horizontal"
+                                                Spacing="8">
+                                                <ikw:SimpleStackPanel.Resources>
+                                                    <Style x:Key="DownloadIconStyle" TargetType="TextBlock">
+                                                        <Setter Property="Foreground" Value="#0078D4" />
+                                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                                        <Setter Property="Cursor" Value="Hand" />
+                                                        <Setter Property="FontFamily" Value="{DynamicResource FluentSystemIcons}" />
+                                                        <Setter Property="FontSize" Value="{DynamicResource STControlFontSize16}" />
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Foreground" Value="#106EBE" />
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                    <Style x:Key="UpgradeIconStyle" TargetType="TextBlock">
+                                                        <Setter Property="Foreground" Value="#E74856" />
+                                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                                        <Setter Property="Cursor" Value="Hand" />
+                                                        <Setter Property="FontFamily" Value="{DynamicResource FluentSystemIcons}" />
+                                                        <Setter Property="FontSize" Value="{DynamicResource STControlFontSize16}" />
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Foreground" Value="#F1707A" />
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                    <Style x:Key="InstalledIconStyle" TargetType="TextBlock">
+                                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorDisabledBrushKey}}" />
+                                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                                        <Setter Property="FontFamily" Value="{DynamicResource FluentSystemIcons}" />
+                                                        <Setter Property="FontSize" Value="{DynamicResource STControlFontSize16}" />
+                                                    </Style>
+                                                    <Style x:Key="PendingRestartIconStyle" TargetType="TextBlock">
+                                                        <Setter Property="Foreground" Value="#FF8C00" />
+                                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                                        <Setter Property="FontFamily" Value="{DynamicResource FluentSystemIcons}" />
+                                                        <Setter Property="FontSize" Value="{DynamicResource STControlFontSize16}" />
+                                                        <Setter Property="Opacity" Value="0.8" />
+                                                    </Style>
+                                                    <Style x:Key="CancelIconStyle" TargetType="TextBlock">
+                                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorSecondaryBrushKey}}" />
+                                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                                        <Setter Property="Cursor" Value="Hand" />
+                                                        <Setter Property="FontFamily" Value="{DynamicResource FluentSystemIcons}" />
+                                                        <Setter Property="FontSize" Value="{DynamicResource STControlFontSize16}" />
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Foreground" Value="{DynamicResource {x:Static ui:ThemeKeys.TextFillColorPrimaryBrushKey}}" />
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ikw:SimpleStackPanel.Resources>
+                                                <!--  下载  -->
+                                                <TextBlock
+                                                    Style="{StaticResource DownloadIconStyle}"
+                                                    Text="&#xF150;"
+                                                    ToolTip="{DynamicResource PluginActionDownload}"
+                                                    Visibility="{Binding ActionStatus, Converter={cnvt:PluginActionStatusToVisibilityConverter}, ConverterParameter=Download}">
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding
+                                                            Command="{Binding Data.DownloadPluginCommand, Source={StaticResource ViewModelProxy}}"
+                                                            CommandParameter="{Binding}"
+                                                            MouseAction="LeftClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                                <!--  升级  -->
+                                                <TextBlock
+                                                    Style="{StaticResource UpgradeIconStyle}"
+                                                    Text="&#xF19B;"
+                                                    ToolTip="{DynamicResource PluginActionUpgrade}"
+                                                    Visibility="{Binding ActionStatus, Converter={cnvt:PluginActionStatusToVisibilityConverter}, ConverterParameter=Upgrade}">
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding
+                                                            Command="{Binding Data.DownloadPluginCommand, Source={StaticResource ViewModelProxy}}"
+                                                            CommandParameter="{Binding}"
+                                                            MouseAction="LeftClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                                <!--  已安装  -->
+                                                <TextBlock
+                                                    Style="{StaticResource InstalledIconStyle}"
+                                                    Text="&#xF294;"
+                                                    ToolTip="{DynamicResource PluginActionInstalled}"
+                                                    Visibility="{Binding ActionStatus, Converter={cnvt:PluginActionStatusToVisibilityConverter}, ConverterParameter=Installed}" />
+                                                <!--  待重启  -->
+                                                <TextBlock
+                                                    Style="{StaticResource PendingRestartIconStyle}"
+                                                    Text="&#xED88;"
+                                                    ToolTip="{DynamicResource PluginActionPendingRestart}"
+                                                    Visibility="{Binding ActionStatus, Converter={cnvt:PluginActionStatusToVisibilityConverter}, ConverterParameter=PendingRestart}" />
+                                                <!--  取消  -->
+                                                <TextBlock
+                                                    Style="{StaticResource CancelIconStyle}"
+                                                    Text="&#xF369;"
+                                                    ToolTip="{DynamicResource Cancel}"
+                                                    Visibility="{Binding IsDownloading, Converter={cnvt:BoolToVisibilityConverter}}">
+                                                    <TextBlock.InputBindings>
+                                                        <MouseBinding
+                                                            Command="{Binding Data.CancelDownloadCommand, Source={StaticResource ViewModelProxy}}"
+                                                            CommandParameter="{Binding}"
+                                                            MouseAction="LeftClick" />
+                                                    </TextBlock.InputBindings>
+                                                </TextBlock>
+                                            </ikw:SimpleStackPanel>
                                         </Grid>
 
                                         <!--  描述  -->

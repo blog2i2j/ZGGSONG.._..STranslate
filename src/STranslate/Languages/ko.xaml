@@ -202,6 +202,10 @@
     <sys:String x:Key="PluginMarketCurrentVersion">현재 버전</sys:String>
     <sys:String x:Key="PluginMarketLatestVersion">최신 버전</sys:String>
     <sys:String x:Key="PluginDownloadCancelled">다운로드가 취소되었습니다</sys:String>
+    <sys:String x:Key="PluginActionDownload">플러그인 다운로드</sys:String>
+    <sys:String x:Key="PluginActionUpgrade">플러그인 업그레이드</sys:String>
+    <sys:String x:Key="PluginActionInstalled">설치됨</sys:String>
+    <sys:String x:Key="PluginActionPendingRestart">재시작 대기중</sys:String>
 
     <sys:String x:Key="Network_EnableExternalCall">외부 호출 활성화</sys:String>
     <sys:String x:Key="Network_EnableExternalCallDescription">외부 호출 기능 활성화 또는 비활성화</sys:String>
