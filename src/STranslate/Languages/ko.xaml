@@ -560,6 +560,8 @@
     <sys:String x:Key="PluginUpgradeConfirm">플러그인 {0}의 설치된 버전 {1}, 새 버전 {2}. 업그레이드하시겠습니까?</sys:String>
     <sys:String x:Key="PluginUpgradeSuccess">플러그인 업그레이드 준비 완료, 재시작 후 적용됩니다.</sys:String>
     <sys:String x:Key="PluginUpgradeFailed">플러그인 업그레이드 실패</sys:String>
+    <sys:String x:Key="RestartNow">지금 재시작</sys:String>
+    <sys:String x:Key="RestartLater">나중에 수동 재시작</sys:String>
     <sys:String x:Key="BatchOperation">일괄 작업</sys:String>
     <sys:String x:Key="DeleteSelected">선택 항목 삭제</sys:String>
     <sys:String x:Key="NoPluginSelected">선택된 플러그인 없음</sys:String>

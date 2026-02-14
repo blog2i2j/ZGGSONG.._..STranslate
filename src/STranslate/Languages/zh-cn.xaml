@@ -578,6 +578,8 @@
     <sys:String x:Key="PluginUpgradeConfirm">插件 {0} 已安装版本 {1}，新版本 {2}。是否要升级？</sys:String>
     <sys:String x:Key="PluginUpgradeSuccess">插件升级准备就绪，重启后生效</sys:String>
     <sys:String x:Key="PluginUpgradeFailed">插件升级失败</sys:String>
+    <sys:String x:Key="RestartNow">立即重启</sys:String>
+    <sys:String x:Key="RestartLater">稍后手动重启</sys:String>
     <sys:String x:Key="BatchOperation">批量操作</sys:String>
     <sys:String x:Key="DeleteSelected">删除选中</sys:String>
     <sys:String x:Key="NoPluginSelected">未选择插件</sys:String>

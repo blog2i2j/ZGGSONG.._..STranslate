@@ -60,19 +60,6 @@
                 DockPanel.Dock="Right"
                 Orientation="Horizontal"
                 Spacing="10">
-                <Button
-                    Command="{Binding BatchDeletePluginCommand}"
-                    CommandParameter="{Binding ElementName=PART_PluginListBox, Path=SelectedItems}"
-                    Foreground="{DynamicResource SystemFillColorCriticalBrush}"
-                    ToolTip="{DynamicResource DeleteSelected}"
-                    Visibility="{Binding IsMultiSelectMode, Converter={cnvt:BoolToVisibilityConverter}}">
-                    <ui:IconAndText Content="{DynamicResource Delete}" Icon="{x:Static ui:FluentSystemIcons.Delete_24_Regular}" />
-                </Button>
-
-                <Button Command="{Binding ToggleMultiSelectModeCommand}" ToolTip="{DynamicResource BatchOperation}">
-                    <ui:IconAndText Content="{DynamicResource BatchOperation}" Icon="{x:Static ui:FluentSystemIcons.TaskListSquareLtr_20_Regular}" />
-                </Button>
-
                 <Button Command="{Binding MarketCommand}" Style="{DynamicResource {x:Static ui:ThemeKeys.AccentButtonStyleKey}}">
                     <ui:IconAndText Content="{DynamicResource Market}" Icon="{x:Static ui:FluentSystemIcons.Apps_20_Regular}" />
                 </Button>
@@ -148,38 +135,17 @@
                 <Style BasedOn="{StaticResource {x:Type ListBox}}" TargetType="ListBox">
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="SelectionMode" Value="Single" />
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsMultiSelectMode}" Value="True">
-                            <Setter Property="SelectionMode" Value="Multiple" />
-                        </DataTrigger>
-                    </Style.Triggers>
                 </Style>
             </ListBox.Style>
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="plugin:PluginMetaData">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <CheckBox
-                            Grid.Column="0"
-                            MinWidth="0"
-                            Margin="0,0,8,0"
-                            VerticalAlignment="Center"
-                            IsEnabled="{Binding IsPrePlugin, Converter={cnvt:BoolInverseConverter}}"
-                            Visibility="{Binding Data.IsMultiSelectMode, Source={StaticResource ViewModelProxy}, Converter={cnvt:BoolToVisibilityConverter}}">
-                            <CheckBox.IsChecked>
-                                <MultiBinding Converter="{cnvt:PrePluginBoolMultiConverter}">
-                                    <Binding Path="IsPrePlugin" />
-                                    <Binding Path="IsSelected" RelativeSource="{RelativeSource AncestorType=ListBoxItem}" />
-                                </MultiBinding>
-                            </CheckBox.IsChecked>
-                        </CheckBox>
 
                         <ui:SettingsCard
                             x:Name="PluginCard"
-                            Grid.Column="1"
                             Margin="0,3"
                             Description="{Binding Description}"
                             Header="{Binding Name}">

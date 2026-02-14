@@ -560,6 +560,8 @@
     <sys:String x:Key="PluginUpgradeConfirm">プラグイン {0} の既知のバージョン {1}、新バージョン {2}。更新しますか？</sys:String>
     <sys:String x:Key="PluginUpgradeSuccess">プラグイン更新の準備が完了しました。再起動後に反映されます。</sys:String>
     <sys:String x:Key="PluginUpgradeFailed">プラグイン更新に失敗しました</sys:String>
+    <sys:String x:Key="RestartNow">今すぐ再起動</sys:String>
+    <sys:String x:Key="RestartLater">後で手動で再起動</sys:String>
     <sys:String x:Key="BatchOperation">一括操作</sys:String>
     <sys:String x:Key="DeleteSelected">選択項目を削除</sys:String>
     <sys:String x:Key="NoPluginSelected">プラグインが選択されていません</sys:String>
