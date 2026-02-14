@@ -206,6 +206,7 @@
     <sys:String x:Key="PluginActionUpgrade">プラグインをアップグレード</sys:String>
     <sys:String x:Key="PluginActionInstalled">インストール済み</sys:String>
     <sys:String x:Key="PluginActionPendingRestart">再起動待ち</sys:String>
+    <sys:String x:Key="PluginActionWebsite">プロジェクトページ</sys:String>
 
     <sys:String x:Key="Network_EnableExternalCall">外部呼び出しを有効化</sys:String>
     <sys:String x:Key="Network_EnableExternalCallDescription">外部呼び出し機能の有効/無効化</sys:String>

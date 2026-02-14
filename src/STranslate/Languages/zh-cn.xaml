@@ -211,6 +211,7 @@
     <sys:String x:Key="PluginActionUpgrade">升级插件</sys:String>
     <sys:String x:Key="PluginActionInstalled">已安装</sys:String>
     <sys:String x:Key="PluginActionPendingRestart">待重启</sys:String>
+    <sys:String x:Key="PluginActionWebsite">项目主页</sys:String>
     <sys:String x:Key="PluginDownloadCancelled">下载已取消</sys:String>
 
     <!--  // Network Page //  -->

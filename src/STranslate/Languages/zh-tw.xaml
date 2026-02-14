@@ -212,6 +212,7 @@
     <sys:String x:Key="PluginActionUpgrade">升級插件</sys:String>
     <sys:String x:Key="PluginActionInstalled">已安裝</sys:String>
     <sys:String x:Key="PluginActionPendingRestart">待重啟</sys:String>
+    <sys:String x:Key="PluginActionWebsite">項目主頁</sys:String>
 
     <!--  // Network Page //  -->
     <sys:String x:Key="Network_EnableExternalCall">啟用外部呼叫</sys:String>

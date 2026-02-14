@@ -7,9 +7,9 @@ using STranslate.Plugin;
 using STranslate.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
-using System.Windows;
 using System.Windows.Data;
 
 namespace STranslate.ViewModels.Pages;
@@ -565,6 +565,14 @@ public partial class PluginMarketViewModel : ObservableObject
             .Select(part => int.TryParse(part, out var num) ? num : 0)
             .ToArray();
     }
+
+    #endregion
+
+    #region 打开项目主页
+
+    [RelayCommand]
+    private void OpenOfficialLink(string url)
+        => Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
 
     #endregion
 

@@ -212,6 +212,7 @@
     <sys:String x:Key="PluginActionUpgrade">Upgrade Plugin</sys:String>
     <sys:String x:Key="PluginActionInstalled">Installed</sys:String>
     <sys:String x:Key="PluginActionPendingRestart">Pending Restart</sys:String>
+    <sys:String x:Key="PluginActionWebsite">Project Website</sys:String>
 
     <!--  // Network Page //  -->
     <sys:String x:Key="Network_EnableExternalCall">Enable external call</sys:String>
