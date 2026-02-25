@@ -500,6 +500,9 @@
     <sys:String x:Key="PluginTypeTts">Tts</sys:String>
     <sys:String x:Key="PluginTypeVocabulary">Vocabulary</sys:String>
 
+    <sys:String x:Key="PluginMarketSettings">Advanced Settings</sys:String>
+    <sys:String x:Key="PluginMarketSettingsChanged">CDN source settings changed. Refresh plugin list now?</sys:String>
+
     <sys:String x:Key="ProxyTypeSystem">System</sys:String>
     <sys:String x:Key="ProxyTypeHttp">HTTP</sys:String>
     <sys:String x:Key="ProxyTypeSocks5">Socks5</sys:String>

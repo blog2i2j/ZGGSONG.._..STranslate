@@ -484,6 +484,9 @@
     <sys:String x:Key="PluginTypeTts">音声合成</sys:String>
     <sys:String x:Key="PluginTypeVocabulary">単語帳</sys:String>
 
+    <sys:String x:Key="PluginMarketSettings">詳細設定</sys:String>
+    <sys:String x:Key="PluginMarketSettingsChanged">CDNソース設定が変更されました。プラグインリストを今すぐ更新しますか？</sys:String>
+
     <sys:String x:Key="ProxyTypeSystem">システムプロキシ</sys:String>
     <sys:String x:Key="ProxyTypeHttp">HTTPプロキシ</sys:String>
     <sys:String x:Key="ProxyTypeSocks5">Socks5プロキシ</sys:String>

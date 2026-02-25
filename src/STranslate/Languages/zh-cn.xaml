@@ -501,6 +501,9 @@
     <sys:String x:Key="PluginTypeTts">语音合成</sys:String>
     <sys:String x:Key="PluginTypeVocabulary">生词本</sys:String>
 
+    <sys:String x:Key="PluginMarketSettings">高级配置</sys:String>
+    <sys:String x:Key="PluginMarketSettingsChanged">CDN 源设置已更改，是否立即刷新插件列表？</sys:String>
+
     <sys:String x:Key="ProxyTypeSystem">系统代理</sys:String>
     <sys:String x:Key="ProxyTypeHttp">HTTP代理</sys:String>
     <sys:String x:Key="ProxyTypeSocks5">Socks5代理</sys:String>

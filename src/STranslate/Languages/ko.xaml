@@ -484,6 +484,9 @@
     <sys:String x:Key="PluginTypeTts">음성 합성</sys:String>
     <sys:String x:Key="PluginTypeVocabulary">단어장</sys:String>
 
+    <sys:String x:Key="PluginMarketSettings">고급 설정</sys:String>
+    <sys:String x:Key="PluginMarketSettingsChanged">CDN 소스 설정이 변경되었습니다. 지금 플러그인 목록을 새로고침하시겠습니까?</sys:String>
+
     <sys:String x:Key="ProxyTypeSystem">시스템 프록시</sys:String>
     <sys:String x:Key="ProxyTypeHttp">HTTP 프록시</sys:String>
     <sys:String x:Key="ProxyTypeSocks5">Socks5 프록시</sys:String>

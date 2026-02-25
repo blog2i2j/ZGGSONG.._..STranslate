@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using iNKORE.UI.WPF.Modern.Controls;
 using Microsoft.Win32;
+using STranslate.Controls;
 using STranslate.Core;
 using STranslate.Helpers;
 using STranslate.Plugin;
@@ -894,6 +895,34 @@ public partial class PluginViewModel : ObservableObject
     [RelayCommand]
     private void OpenOfficialLink(string url)
         => Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
+
+    /// <summary>
+    /// 打开插件市场高级配置对话框
+    /// </summary>
+    [RelayCommand]
+    private async Task OpenMarketSettingsAsync()
+    {
+        var dialog = new PluginMarketSettingsDialog(_settings, DataProvider);
+        var result = await dialog.ShowAsync();
+
+        // 如果保存了设置且当前在市场视图，提示用户刷新以应用新设置
+        if (dialog.IsSaved && IsMarketView && IsMarketInitialized)
+        {
+            var refreshResult = await new ContentDialog
+            {
+                Title = _i18n.GetTranslation("Prompt"),
+                Content = _i18n.GetTranslation("PluginMarketSettingsChanged"),
+                PrimaryButtonText = _i18n.GetTranslation("PluginMarketRefresh"),
+                CloseButtonText = _i18n.GetTranslation("Cancel"),
+                DefaultButton = ContentDialogButton.Primary,
+            }.ShowAsync();
+
+            if (refreshResult == ContentDialogResult.Primary)
+            {
+                await LoadPluginsAsync();
+            }
+        }
+    }
 }
 
 /// <summary>
