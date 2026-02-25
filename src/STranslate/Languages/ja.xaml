@@ -110,6 +110,21 @@
     <sys:String x:Key="General_CopyAfterTranslationNotAutomatic">「自動実行」以外の翻訳後にコピー</sys:String>
     <sys:String x:Key="General_CopyAfterOcr">OCR後にコピー</sys:String>
     <sys:String x:Key="General_CopyAfterOcrDescription">すべての文字認識シーンにおいて、認識後に結果を自動コピーします。</sys:String>
+    <sys:String x:Key="General_PluginMarketCdnSource">プラグイン市場CDNソース</sys:String>
+    <sys:String x:Key="General_PluginMarketCdnSourceDescription">プラグイン市場データのCDN加速サービスを選択（GitHub直リンクはキャッシュ遅延なし）</sys:String>
+    <sys:String x:Key="General_CustomCdnUrl">カスタムCDN URL</sys:String>
+    <sys:String x:Key="General_CustomCdnUrlDescription">カスタムCDN URLテンプレートを入力、{author}、{repo}、{branch}、{path}をプレースホルダとして使用</sys:String>
+
+    <!--  // PluginMarketCdnSourceType //  -->
+    <sys:String x:Key="PluginMarketCdnSourceTypeJsDelivr">jsDelivr CDN（推奨）</sys:String>
+    <sys:String x:Key="PluginMarketCdnSourceTypeGitHubRaw">GitHub 直リンク</sys:String>
+    <sys:String x:Key="PluginMarketCdnSourceTypeCustom">カスタム</sys:String>
+
+    <!--  // PluginDownloadProxyType //  -->
+    <sys:String x:Key="PluginDownloadProxyTypeGitHub">GitHub 直接接続</sys:String>
+    <sys:String x:Key="PluginDownloadProxyTypeGhProxyMirror">mirror.ghproxy.com</sys:String>
+    <sys:String x:Key="PluginDownloadProxyTypeGhProxyNet">ghproxy.net</sys:String>
+    <sys:String x:Key="PluginDownloadProxyTypeCustom">カスタム</sys:String>
 
     <sys:String x:Key="GlobalHotkeys">グローバルホットキー</sys:String>
     <sys:String x:Key="SoftwareHotkeys">ソフトウェアホットキー</sys:String>
@@ -183,6 +198,25 @@
     <sys:String x:Key="SearchPlugin">プラグインを検索</sys:String>
     <sys:String x:Key="SearchPluginToolTip">Ctrl+F でプラグインを検索</sys:String>
     <sys:String x:Key="DropInstallPlugin">ドロップしてプラグインをインストール</sys:String>
+
+    <!--  // Plugin Market //  -->
+    <sys:String x:Key="PluginMarketRefresh">更新</sys:String>
+    <sys:String x:Key="PluginMarketDownload">ダウンロード</sys:String>
+    <sys:String x:Key="PluginMarketUpgrade">アップグレード</sys:String>
+    <sys:String x:Key="PluginMarketInstalled">インストール済み</sys:String>
+    <sys:String x:Key="PluginMarketDownloading">ダウンロード中</sys:String>
+    <sys:String x:Key="Back">戻る</sys:String>
+    <sys:String x:Key="PluginMarketLoading">読み込み中...</sys:String>
+    <sys:String x:Key="PluginMarketLoadError">読み込みに失敗しました</sys:String>
+    <sys:String x:Key="PluginMarketNoPlugins">プラグインがありません</sys:String>
+    <sys:String x:Key="PluginMarketCurrentVersion">現在のバージョン</sys:String>
+    <sys:String x:Key="PluginMarketLatestVersion">最新バージョン</sys:String>
+    <sys:String x:Key="PluginDownloadCancelled">ダウンロードがキャンセルされました</sys:String>
+    <sys:String x:Key="PluginActionDownload">プラグインをダウンロード</sys:String>
+    <sys:String x:Key="PluginActionUpgrade">プラグインをアップグレード</sys:String>
+    <sys:String x:Key="PluginActionInstalled">インストール済み</sys:String>
+    <sys:String x:Key="PluginActionPendingRestart">再起動待ち</sys:String>
+    <sys:String x:Key="PluginActionWebsite">プロジェクトページ</sys:String>
 
     <sys:String x:Key="Network_EnableExternalCall">外部呼び出しを有効化</sys:String>
     <sys:String x:Key="Network_EnableExternalCallDescription">外部呼び出し機能の有効/無効化</sys:String>
@@ -456,6 +490,14 @@
     <sys:String x:Key="PluginTypeTts">音声合成</sys:String>
     <sys:String x:Key="PluginTypeVocabulary">単語帳</sys:String>
 
+    <sys:String x:Key="PluginMarketSettings">詳細設定</sys:String>
+    <sys:String x:Key="PluginMarketSettingsChanged">CDNソース設定が変更されました。プラグインリストを今すぐ更新しますか？</sys:String>
+    <sys:String x:Key="PluginDownloadProxy">ダウンロードプロキシ</sys:String>
+    <sys:String x:Key="PluginDownloadProxyDescription">GitHub Releasesのダウンロードを高速化するために使用</sys:String>
+    <sys:String x:Key="PluginDownloadProxyUrl">カスタムプロキシURL</sys:String>
+    <sys:String x:Key="PluginDownloadProxyUrlDescription">カスタムプロキシアドレスを入力</sys:String>
+    <sys:String x:Key="PluginDownloadProxyUrlExample">例：https://mirror.ghproxy.com/</sys:String>
+
     <sys:String x:Key="ProxyTypeSystem">システムプロキシ</sys:String>
     <sys:String x:Key="ProxyTypeHttp">HTTPプロキシ</sys:String>
     <sys:String x:Key="ProxyTypeSocks5">Socks5プロキシ</sys:String>
@@ -541,6 +583,9 @@
     <sys:String x:Key="PluginUpgradeConfirm">プラグイン {0} の既知のバージョン {1}、新バージョン {2}。更新しますか？</sys:String>
     <sys:String x:Key="PluginUpgradeSuccess">プラグイン更新の準備が完了しました。再起動後に反映されます。</sys:String>
     <sys:String x:Key="PluginUpgradeFailed">プラグイン更新に失敗しました</sys:String>
+    <sys:String x:Key="RestartNow">今すぐ再起動</sys:String>
+    <sys:String x:Key="RestartLater">後で手動で再起動</sys:String>
+    <sys:String x:Key="PendingRestart">再起動待ち</sys:String>
     <sys:String x:Key="BatchOperation">一括操作</sys:String>
     <sys:String x:Key="DeleteSelected">選択項目を削除</sys:String>
     <sys:String x:Key="NoPluginSelected">プラグインが選択されていません</sys:String>

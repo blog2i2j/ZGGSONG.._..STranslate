@@ -73,13 +73,73 @@ dotnet build STranslate.slnx --configuration Debug
 
 ## 快速参考
 
-| 任务 | 相关文档 |
-|------|---------|
-| 了解项目结构 | [项目概述](docs/overview.md) |
-| 构建项目 | CLAUDE.md 快速构建 或 [项目概述](docs/overview.md) |
-| 开发插件 | [插件开发指南](docs/plugin.md) |
-| 修改热键功能 | [功能特性](docs/features.md) |
-| 修改剪贴板监听 | [功能特性](docs/features.md) |
-| 修改历史记录 | [功能特性](docs/features.md) |
-| 修改核心服务/UI | [参考信息](docs/reference.md) |
-| 查找关键文件 | [参考信息](docs/reference.md) |
+### 按任务类型查找
+
+| 任务类型 | 关键文件/位置 | 详细文档 |
+|---------|-------------|---------|
+| **UI 页面开发** | `STranslate/Views/Pages/*.xaml` | [参考信息](docs/reference.md) |
+| **ViewModel 逻辑** | `STranslate/ViewModels/Pages/*.cs` | [架构设计](docs/architecture.md) |
+| **添加新服务** | `STranslate/ViewModels/Preference/Services/*.cs` | [架构设计](docs/architecture.md#服务管理) |
+| **开发插件** | `Plugins/` 目录 | [插件开发指南](docs/plugin.md) |
+| **修改翻译服务** | `STranslate/ViewModels/Preference/Services/TranslateServiceViewModel.cs` | - |
+| **修改 OCR 服务** | `STranslate/ViewModels/Preference/Services/OCRServiceViewModel.cs` | - |
+| **修改 TTS 服务** | `STranslate/ViewModels/Preference/Services/TTSServiceViewModel.cs` | - |
+| **热键功能** | `STranslate/Core/HotkeySettings.cs` | [功能特性](docs/features.md) |
+| **剪贴板监听** | `STranslate/Helpers/ClipboardMonitor.cs` | [功能特性](docs/features.md) |
+| **历史记录** | `STranslate/Core/SqlService.cs` | [功能特性](docs/features.md) |
+| **添加国际化** | `STranslate/Languages/*.xaml` | [多语言支持](#多语言支持) |
+| **存储配置** | `STranslate/Models/ConfigModel.cs` | [存储与配置](docs/storage.md) |
+
+### 常用文件速查
+
+```
+主窗口              -> STranslate/Views/MainWindow.xaml
+设置窗口            -> STranslate/Views/SettingsWindow.xaml
+翻译输入控件        -> STranslate/Controls/InputControl.xaml
+翻译输出控件        -> STranslate/Controls/OutputControl.xaml
+头部控件            -> STranslate/Controls/HeaderControl.xaml
+
+插件页面            -> STranslate/Views/Pages/PluginPage.xaml（已安装插件 + 插件市场）
+常规设置页面        -> STranslate/Views/Pages/GeneralPage.xaml
+热键设置页面        -> STranslate/Views/Pages/HotkeyPage.xaml
+
+核心翻译服务        -> STranslate/Core/TranslationService.cs
+HTTP 服务           -> STranslate/Core/HttpService.cs
+设置管理            -> STranslate/Core/Settings.cs
+```
+
+### 常见修改场景
+
+| 想实现的功能 | 参考实现位置 |
+|------------|-------------|
+| 添加新的设置项 | `STranslate/Models/ConfigModel.cs` + `STranslate/Views/Pages/GeneralPage.xaml` |
+| 添加页面到设置窗口 | `STranslate/Views/SettingsWindow.xaml` 的导航菜单 |
+| 添加新的图标按钮 | 参考 `PluginPage.xaml` 中的 `ActionIconStyle` |
+| 添加带状态的按钮 | 参考 `PluginPage.xaml` 市场视图的多状态图标样式 |
+| 添加进度显示 | 参考 `PluginPage.xaml` 市场视图的下载进度条 |
+| 添加拖放功能 | 参考 `PluginPage.xaml` 的 `AllowDrop` 实现 |
+| 视图切换（Visibility） | 参考 `PluginPage.xaml` 的 `IsMarketView` 绑定 |
+
+## 最近更新 (2026-02-14)
+
+### 插件页面合并
+- **页面合并**：`PluginPage.xaml` 和 `PluginMarketPage.xaml` 合并为统一的插件管理页面
+- **视图切换**：通过"市场"/"返回"按钮在同一页面内切换"已安装插件"和"插件市场"视图
+- **延迟加载**：插件市场数据首次切换到该视图时才加载，避免页面初始化时的网络卡顿
+- **ViewModel 合并**：`PluginMarketViewModel.cs` 功能合并到 `PluginViewModel.cs`
+
+### 关键文件变更
+- `STranslate/Views/Pages/PluginPage.xaml` - 整合市场视图内容，添加视图切换支持
+- `STranslate/ViewModels/Pages/PluginViewModel.cs` - 合并市场功能（加载、下载、升级等）
+- `STranslate/Views/SettingsWindow.xaml` - 移除独立的插件市场导航项
+- `STranslate/Views/SettingsWindow.xaml.cs` - 移除 PluginMarketPage 导航逻辑
+- ~~`STranslate/Views/Pages/PluginMarketPage.xaml`~~ - 已删除
+- ~~`STranslate/Views/Pages/PluginMarketPage.xaml.cs`~~ - 已删除
+- ~~`STranslate/ViewModels/Pages/PluginMarketViewModel.cs`~~ - 已删除
+
+### 实现细节
+- 使用 `IsMarketView` 属性控制视图切换（`BoolToVisibilityConverter`）
+- 使用 `IsMarketInitialized` 标志实现延迟加载
+- `ToggleMarketViewCommand` 命令处理视图切换
+- 保留原有的拖放安装功能（仅在已安装视图可用）
+
