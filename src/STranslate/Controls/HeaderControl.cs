@@ -6,6 +6,8 @@ namespace STranslate.Controls;
 
 public class HeaderControl : Control
 {
+    private Border? _dragBorder;
+
     static HeaderControl()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(HeaderControl),
@@ -363,14 +365,23 @@ public class HeaderControl : Control
 
     public override void OnApplyTemplate()
     {
+        if (_dragBorder != null)
+        {
+            _dragBorder.MouseLeftButtonDown -= OnDragBorderMouseLeftButtonDown;
+            _dragBorder = null;
+        }
+
         base.OnApplyTemplate();
 
         if (GetTemplateChild("PART_Border") is Border border)
         {
-            border.MouseLeftButtonDown += (s, e) =>
-            {
-                Window.GetWindow(this)?.DragMove();
-            };
+            _dragBorder = border;
+            _dragBorder.MouseLeftButtonDown += OnDragBorderMouseLeftButtonDown;
         }
+    }
+
+    private void OnDragBorderMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        Window.GetWindow(this)?.DragMove();
     }
 }
