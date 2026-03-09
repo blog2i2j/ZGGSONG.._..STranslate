@@ -61,12 +61,12 @@
                             Padding="6,4"
                             Background="{DynamicResource ControlFillColorDefaultBrush}"
                             BorderBrush="{DynamicResource ControlElevationBorderBrush}"
-                            BorderThickness="1,1,0.5,1"
+                            BorderThickness="1,1,0,1"
                             CornerRadius="6,0,0,6">
                             <ui:FontIcon FontSize="{DynamicResource STControlFontSize14}" Icon="{x:Static ui:FluentSystemIcons.ChevronCircleLeft_20_Regular}" />
                         </Border>
                         <Border
-                            Margin="-3.5,0,0,0"
+                            Margin="-0.5,0,0,0"
                             Padding="6,4"
                             Background="{DynamicResource ControlFillColorDefaultBrush}"
                             BorderBrush="{DynamicResource ControlElevationBorderBrush}"

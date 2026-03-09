@@ -113,7 +113,7 @@
                                                 Visibility="Collapsed">
                                                 <control:IconButton
                                                     ui:ControlHelper.CornerRadius="6,0,0,6"
-                                                    BorderThickness="1,1,0.5,1"
+                                                    BorderThickness="1,1,0,1"
                                                     Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type control:HeaderControl}}, Path=HistoryPreviousCommand}"
                                                     Icon="{x:Static ui:FluentSystemIcons.ChevronCircleLeft_20_Regular}"
                                                     ToolTip="{DynamicResource Previous}" />
