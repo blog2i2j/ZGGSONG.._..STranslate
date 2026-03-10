@@ -353,7 +353,7 @@ public partial class App : ISingleInstanceApp, INavigation, IDisposable
             var jsonContent = File.ReadAllText(filePath);
             var parsedData = System.Text.Json.Nodes.JsonNode.Parse(jsonContent);
 
-            if (!Enum.TryParse<StartMode>(parsedData?["StartMode"]?.ToString(), out var mode)
+            if (!Enum.TryParse<StartMode>(parsedData?["StartMode"]?.ToString(), true, out var mode)
                 || mode == StartMode.Normal)
                 return false;
 
