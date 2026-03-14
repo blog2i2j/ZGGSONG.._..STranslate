@@ -51,6 +51,8 @@
     <sys:String x:Key="General_SecondLanguageDescription">翻訳先が自動で、かつ翻訳元が第一言語の場合、翻訳先に第二言語を使用します。</sys:String>
     <sys:String x:Key="General_HttpTimeout">タイムアウト</sys:String>
     <sys:String x:Key="General_HttpTimeoutDescription">ネットワークリクエストのタイムアウト時間。単位：秒。</sys:String>
+    <sys:String x:Key="General_UseClipboardOutput">テキスト出力にクリップボードを使用</sys:String>
+    <sys:String x:Key="General_UseClipboardOutputDescription">有効時はクリップボード Ctrl+V でテキストを出力し、無効時はキーボード入力シミュレーションを使用します（既定）。</sys:String>
     <sys:String x:Key="General_TranslateOnPaste">貼り付け時に即時翻訳</sys:String>
     <sys:String x:Key="General_TranslateOnPasteDescription">入力ボックスにテキストを貼り付けると、直ちに翻訳を実行します。</sys:String>
     <sys:String x:Key="General_AutoTranslate">自動翻訳</sys:String>

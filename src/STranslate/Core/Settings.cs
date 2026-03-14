@@ -111,6 +111,13 @@ public partial class Settings : ObservableObject
     [ObservableProperty] public partial LangEnum SecondLanguage { get; set; } = LangEnum.English;
 
     /// <summary>
+    /// 文本输出是否使用剪贴板粘贴。
+    /// false: 键盘模拟输入（默认）
+    /// true: 剪贴板 Ctrl+V
+    /// </summary>
+    [ObservableProperty] public partial bool UseClipboardOutput { get; set; } = false;
+
+    /// <summary>
     /// 粘贴时自动翻译
     /// </summary>
     [ObservableProperty] public partial bool TranslateOnPaste { get; set; } = true;
