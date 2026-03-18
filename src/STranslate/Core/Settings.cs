@@ -722,9 +722,9 @@ public enum WindowScreenType
 {
     RememberLastLaunchLocation,
     Cursor,
-    FollowMouse,
     Focus,
     Primary,
+    FollowMouse,
     Custom
 }
 
