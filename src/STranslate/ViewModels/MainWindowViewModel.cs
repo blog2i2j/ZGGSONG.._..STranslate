@@ -207,7 +207,7 @@ public partial class MainWindowViewModel : ObservableObject, IDisposable
 
         #region 历史记录处理
 
-        if (Settings.HistoryLimit > 0 && history != null)
+        if (Settings.HistoryLimit > 0 && history != null && history.Data.Count != 0)
         {
             // 按服务启用顺序排序
             var enabledServices = TranslateService.Services.Where(x => x.IsEnabled).ToList();
